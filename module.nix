@@ -157,7 +157,6 @@ in
           mini-nvim # QoL tools (pairs, surround, etc)
           nvim-ufo
           todo-comments-nvim
-          undotree
           vim-repeat # better . repetition
           ;
       }
