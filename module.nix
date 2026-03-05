@@ -123,11 +123,6 @@ in
         luasnip
 
         colorful-menu-nvim # provide additional info for completion suggestions
-
-        #FIXME: is this still needed?
-        #YouCompleteMe # Code completion engine
-        # TODO(vim): is this wiped out by others above
-        # supertab # Use <tab> for insert completion needs - https://github.com/ervandew/supertab/
         ;
     };
   };

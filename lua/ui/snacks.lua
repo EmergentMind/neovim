@@ -35,7 +35,7 @@ return {
                 icon = " ",
                 desc = "New File",
                 key = ":ene",
-                action = ":ene | startinsert"
+                action = ":ene | startinsert",
               },
               {
                 icon = " ",
@@ -67,7 +67,6 @@ return {
                 key = "<leader>fh",
                 action = ":Telescope help_tags",
               },
-
             },
             header = [[
                            ..',;:::::::;,'..
@@ -125,13 +124,12 @@ return {
                 end
               end
               local dir, file = fname:match("^(.*)/(.+)$")
-              return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } }
-                  or { { fname, hl = "file" } }
+              return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
             end,
           },
           sections = {
             { section = "header" },
-            { section = "keys",  gap = 1, padding = 1 },
+            { section = "keys", gap = 1, padding = 1 },
           },
         },
 
