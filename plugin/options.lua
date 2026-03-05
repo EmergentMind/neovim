@@ -4,14 +4,18 @@
 local opt = vim.opt
 local fn = vim.fn
 
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- Decrease update time
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 -- ================ General Appearance ========================
 opt.hidden = true
 -- show line numbers
 opt.number = true
 opt.termguicolors = true
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 -- show relative linenumbers
 opt.relativenumber = false
 -- display status line always
@@ -32,7 +36,7 @@ opt.visualbell = true
 opt.list = true
 opt.listchars = {
   --tab = '» ',
-  trail = '·',
+  trail = "·",
   --nbsp = '␣'
 }
 
@@ -42,15 +46,20 @@ opt.clipboard = "unnamedplus"
 
 -- ================ Basic Completion =======================
 opt.wildmode = "list:longest,list:full" -- for tab completion in : command mode
-opt.wildmenu = true                     -- enable ctrl-n and ctrl-p to scroll thru matches
+opt.wildmenu = true -- enable ctrl-n and ctrl-p to scroll thru matches
 -- stuff to ignore when tab completing
 opt.wildignore =
-"*.o,*.obj,*~,vim/backups,sass-cache,DS_Store,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif";
+  "*.o,*.obj,*~,vim/backups,sass-cache,DS_Store,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif"
+-- Set completeopt to have a better completion experience
+opt.completeopt = "menu,preview,noselect"
 
 -- ================ Wrapping and Line Breaks ========================
 opt.wrap = false
 -- Wrap lines at convenient points
 opt.linebreak = true
+-- stops line wrapping from being confusing
+opt.breakindent = true
+
 opt.textwidth = 80
 -- Toggle wrap function
 -- function ToggleWrap()
@@ -58,15 +67,17 @@ opt.textwidth = 80
 -- end
 
 -- ================ Indentation ======================
-opt.autoindent = true
+-- opt.smarttab = true
+opt.cpoptions:append("I")
+opt.expandtab = true
+-- opt.smartindent = true
+-- opt.autoindent = true
+-- opt.tabstop = 4
+-- opt.softtabstop = 4
+-- opt.shiftwidth = 4
+
 -- automatically indent braces
 opt.cindent = true
-opt.smartindent = true
-opt.smarttab = true
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
-opt.expandtab = true
 
 -- ================ Folds ============================
 -- FIXME: This folds section could be replaced with custom functions at some
@@ -79,8 +90,8 @@ opt.foldnestmax = 3
 opt.foldenable = false
 
 -- ================ Splits ============================
-opt.splitbelow = true;
-opt.splitright = true;
+opt.splitbelow = true
+opt.splitright = true
 
 -- ================ Scrolling ========================
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -90,7 +101,7 @@ opt.sidescroll = 1
 
 -- ================ Search and Replace ========================
 -- Preview incremental substitutions in a split
-opt.inccommand = 'split'
+opt.inccommand = "split"
 -- searches incrementally as you type instead of after 'enter'
 opt.incsearch = true
 -- highlight search results
@@ -100,13 +111,14 @@ opt.ignorecase = true
 -- search matters if capital letter
 opt.smartcase = true
 
-
 -- ================ Movement ========================
 -- allow backspace in insert mode
 opt.backspace = "indent,eol,start"
+-- enable mouse mode
+opt.mouse = "a"
 
 -- ========= Cursor =========
-opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,n-v-i:blinkon0";
+opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,n-v-i:blinkon0"
 
 -- ========= Redirect Temp Files =========
 -- backup
@@ -120,12 +132,12 @@ opt.directory = "$HOME/.vim/swap//,/tmp//,."
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
 -- FIXME: enable persistent_undo
-if fn.has('persistent_undo') == 1 then
-  local undo_dir = fn.expand('~/.vim/backups')
+if fn.has("persistent_undo") == 1 then
+  local undo_dir = fn.expand("~/.vim/backups")
 
   -- Create the directory if it doesn't exist;
   if fn.isdirectory(undo_dir) == 0 then
-    fn.mkdir(undo_dir, 'p')
+    fn.mkdir(undo_dir, "p")
   end
 
   opt.undodir = undo_dir
