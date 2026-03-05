@@ -14,10 +14,6 @@
 --    "l" Insert, command-line and lang-arg mode
 --    "c" Command-line mode
 
--- NOTE: These 2 need to be set up before any plugins are loaded.
-vim.g.mapleader = ';'
-vim.g.maplocalleader = ';'
-
 local map = vim.keymap.set
 
 -- ========== Nixvim Config Shortcuts ==========

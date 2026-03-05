@@ -10,8 +10,5 @@ return {
       { "<leader>gj", "<cmd>diffget //3<CR>", mode = { "n" }, desc = "Quick git merge: take from right page (tab 3) upstream" },
       { "<leader>gf", "<cmd>diffget //2<CR>", mode = { "n" }, desc = "Quick git merge: take from left page (tab 2) head" },
     },
-    -- after = function(plugin)
-    --   require("fugitive").setup({})
-    -- end
   },
 }

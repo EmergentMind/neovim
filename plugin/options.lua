@@ -4,8 +4,6 @@
 local opt = vim.opt
 local fn = vim.fn
 
-vim.loader.enable() -- bytecode caching
-
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- ================ General Appearance ========================

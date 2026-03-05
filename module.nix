@@ -12,6 +12,7 @@ let
       ./init.lua
       ./lua
       ./after
+      ./plugin
     ];
   };
 in
@@ -40,6 +41,22 @@ in
         ;
     };
   };
+
+  # # use host theme from nix-config
+  # config.specs.base16 = {
+  #   data = pkgs.vimPlugins.mini-base16;
+  #   before = ["INIT_MAIN"];
+  #   # get colors from system and pass it
+  #   palette = pkgs.lib.filterAttrs (
+  #           k: v: builtins.match "base0[0-9A-F]" k != null
+  #   ) config.lib.stylix.colors.withHashtag;
+  #   config = /* lua */ ''
+  #     local info, pname, lazy = ...
+  #     require("mini.base16").setup({
+  #       palette = palette
+  #     })
+  #     '';
+  # };
 
   config.specs.lsp = {
     data = lib.attrValues {
@@ -131,12 +148,12 @@ in
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
       comment-nvim
+      cutlass-nvim # sends deleted chars to blackhole register
       mini-nvim # QoL tools (pairs, surround, etc)
       nvim-ufo
       todo-comments-nvim
       undotree
       vim-repeat # better . repetition
-      vim-sleuth # autoadjust swiftwidth and expandtab heuristically
       ;
     }
     ++ [
@@ -185,6 +202,7 @@ in
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
         conform-nvim
+        kdl-vim
         ;
     };
     extraPackages = lib.attrValues {
@@ -254,6 +272,7 @@ in
       nvim-highlight-colors
       nvim-notify
       range-highlight-nvim # Highlight range as specified in commandline e.g. :10,15
+      smart-splits-nvim
       snacks-nvim
       trouble-nvim
       vim-illuminate # Highlight similar words as are under the cursor
@@ -265,6 +284,7 @@ in
       ;
     };
   };
+
   config.specs.wiki = {
     after = ["ui" "completion"];
     lazy = true;

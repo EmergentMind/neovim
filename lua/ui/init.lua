@@ -1,0 +1,16 @@
+return {
+  { import = "ui.highlight-colors" },
+  { import = "ui.lualine" },
+  { import = "ui.mini-base16" },
+  { import = "ui.neo-tree" },
+  { import = "ui.notifications" },
+  { import = "ui.nvim-numbertoggle" },
+  { import = "ui.range-highlight" },
+  { import = "ui.smart-splits" },
+  { import = "ui.snacks" },
+  { import = "ui.trouble" },
+  { import = "ui.ufo" },
+  { import = "ui.vimade" },
+  { import = "ui.which-key" },
+  { import = "ui.zen-mode" },
+}

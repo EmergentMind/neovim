@@ -33,39 +33,39 @@ return {
             keys = {
               {
                 icon = " ",
-                desc = "New File    :ene",
-                -- key = "n",
-                -- action = ":ene | startinsert"
+                desc = "New File",
+                key = ":ene",
+                action = ":ene | startinsert"
               },
               {
                 icon = " ",
-                desc = "Find File   <leader>ff",
-                -- key = "f",
-                -- action = ":Telescope find_files",
+                desc = "Find File",
+                key = "<leader>ff",
+                action = ":Telescope find_files",
               },
               {
                 icon = " ",
-                desc = "Find Buffer   <leader>fb",
-                -- key = "b",
-                -- action = ":Telescope buffers",
+                desc = "Find Buffer",
+                key = "<leader>fb",
+                action = ":Telescope buffers",
               },
               {
                 icon = " ",
-                desc = "Live grep   <leader>fg",
-                -- key = "g",
-                -- action = ":Telescope live_grep",
+                desc = "Live grep",
+                key = "<leader>fg",
+                action = ":Telescope live_grep",
               },
               {
                 icon = " ",
-                desc = "Recent Files    <leader>fr",
-                -- key = "r",
-                -- action = ":Telescope oldfiles",
+                desc = "Recent Files",
+                key = "<leader>fr",
+                action = ":Telescope oldfiles",
               },
               {
                 icon = "󰮥 ",
-                desc = "Help tags     <leader>fh",
-                -- key = "r",
-                -- action = ":Telescope help_tags",
+                desc = "Help tags",
+                key = "<leader>fh",
+                action = ":Telescope help_tags",
               },
 
             },
@@ -132,9 +132,15 @@ return {
           sections = {
             { section = "header" },
             { section = "keys",  gap = 1, padding = 1 },
+            {
+            icon = " ",
+            title = "Git Status",
+            cmd = "git --no-pager diff --stat -B -M -C",
+            height = 10,
+            padding = 2,
+            },
           },
         },
-        lazygit = { enabled = false },
 
         -- picker/explorer
         -- FIXME: currently LPSs uses this but it may be worth replacing

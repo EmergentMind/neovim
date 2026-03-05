@@ -1,3 +1,4 @@
+-- dim unfocused buffers
 return {
   {
     "vimade",
