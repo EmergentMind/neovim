@@ -97,7 +97,6 @@ in
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
         avante-nvim
-        # copilot # FIXME:
 
         # These are already in config.specs.completions:
         # blink-cmp-avante
@@ -114,12 +113,6 @@ in
         blink-cmp-avante # TODO: setup
         blink-cmp-conventional-commits
         # blink-cmp-npm #TODO: setup maybe
-        blink-compat # allows running cmp-foo through blink-cmp
-        cmp-buffer
-        cmp-cmdline
-        cmp-nvim-lsp
-        cmp-nvim-lsp-signature-help
-        cmp-nvim-lua
         luasnip
 
         colorful-menu-nvim # provide additional info for completion suggestions
@@ -147,7 +140,6 @@ in
     data =
       lib.attrValues {
         inherit (pkgs.vimPlugins)
-          comment-nvim
           cutlass-nvim # sends deleted chars to blackhole register
           mini-nvim # QoL tools (pairs, surround, etc)
           nvim-ufo
@@ -226,6 +218,7 @@ in
         ;
     };
   };
+
   config.specs.git = {
     after = [ "core" ];
     lazy = true;
