@@ -1,4 +1,5 @@
 return {
+  { import = "ui.hardtime" },
   { import = "ui.highlight-colors" },
   { import = "ui.lualine" },
   { import = "ui.mini-base16" },

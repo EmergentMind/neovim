@@ -1,4 +1,5 @@
-inputs: {
+inputs:
+{
   config,
   wlib,
   lib,
@@ -24,16 +25,16 @@ in
   config.specs.core = {
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      auto-session
-      lze
-      lzextras
-      plenary-nvim # lua function lib used by several other plugins
+        auto-session
+        lze
+        lzextras
+        plenary-nvim # lua function lib used by several other plugins
 
-      nvim-web-devicons
-      ;
+        nvim-web-devicons
+        ;
     };
     extraPackages = lib.attrValues {
-      inherit(pkgs)
+      inherit (pkgs)
         universal-ctags
         ripgrep
         fd
@@ -61,138 +62,143 @@ in
   config.specs.lsp = {
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      nvim-lspconfig
-      lazydev-nvim
-      ;
+        nvim-lspconfig
+        lazydev-nvim
+        ;
     };
     extraPackages = lib.attrValues {
       inherit (pkgs)
-      bash-language-server
-      just-lsp
-      lua-language-server
-      marksman #md
-      nixd
-      nix-doc
-      postgres-language-server
-      stylua
-      taplo # toml
-      ts_query_ls
-      typescript-language-server
-      ;
+        bash-language-server
+        just-lsp
+        lua-language-server
+        marksman # md
+        nixd
+        nix-doc
+        postgres-language-server
+        stylua
+        taplo # toml
+        ts_query_ls
+        typescript-language-server
+        ;
 
       # oh python, you silly bastard
       inherit (pkgs.python313Packages)
-      python-lsp-server
-      ;
+        python-lsp-server
+        ;
     };
   };
 
   config.specs.ai = {
-    after = ["ui" "completion"];
+    after = [
+      "ui"
+      "completion"
+    ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      avante-nvim
-      # copilot # FIXME:
+        avante-nvim
+        # copilot # FIXME:
 
-      # These are already in config.specs.completions:
-      # blink-cmp-avante
-    ;
+        # These are already in config.specs.completions:
+        # blink-cmp-avante
+        ;
     };
   };
 
   config.specs.completion = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      blink-cmp
-      blink-cmp-avante #TODO: setup
-      blink-cmp-conventional-commits
-      # blink-cmp-npm #TODO: setup maybe
-      blink-compat # allows running cmp-foo through blink-cmp
-      cmp-buffer
-      cmp-cmdline
-      cmp-nvim-lsp
-      cmp-nvim-lsp-signature-help
-      cmp-nvim-lua
-      luasnip
+        blink-cmp
+        blink-cmp-avante # TODO: setup
+        blink-cmp-conventional-commits
+        # blink-cmp-npm #TODO: setup maybe
+        blink-compat # allows running cmp-foo through blink-cmp
+        cmp-buffer
+        cmp-cmdline
+        cmp-nvim-lsp
+        cmp-nvim-lsp-signature-help
+        cmp-nvim-lua
+        luasnip
 
-      colorful-menu-nvim # provide additional info for completion suggestions
+        colorful-menu-nvim # provide additional info for completion suggestions
 
-      #FIXME: is this still needed?
-      #YouCompleteMe # Code completion engine
-      # TODO(vim): is this wiped out by others above
-      # supertab # Use <tab> for insert completion needs - https://github.com/ervandew/supertab/
-     ;
+        #FIXME: is this still needed?
+        #YouCompleteMe # Code completion engine
+        # TODO(vim): is this wiped out by others above
+        # supertab # Use <tab> for insert completion needs - https://github.com/ervandew/supertab/
+        ;
     };
   };
 
   config.specs.debug = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
-      nvim-dap-python
-      nvim-dap-lldb
-      ;
+        nvim-dap
+        nvim-dap-ui
+        nvim-dap-virtual-text
+        nvim-dap-python
+        nvim-dap-lldb
+        ;
     };
   };
 
   config.specs.editing = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
-    data = lib.attrValues {
-      inherit (pkgs.vimPlugins)
-      comment-nvim
-      cutlass-nvim # sends deleted chars to blackhole register
-      mini-nvim # QoL tools (pairs, surround, etc)
-      nvim-ufo
-      todo-comments-nvim
-      undotree
-      vim-repeat # better . repetition
-      ;
-    }
-    ++ [
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-        plugins: with plugins; [
-          # asm
-          bash
-          c
-          # cmake
-          # cpp
-          kdl
-          # go
-          git_config
-          gitignore
-          gitcommit
-          html
-          # java
-          javascript
-          # jinja
-          jq
-          json
-          json5
-          just
-          kconfig
-          lua
-          markdown
-          nasm
-          nix
-          # plantuml
-          python
-          regex
-          rust
-          toml
-          typescript
-          yaml
-          zsh
-        ]
-     ))
-    ] ;
+    data =
+      lib.attrValues {
+        inherit (pkgs.vimPlugins)
+          comment-nvim
+          cutlass-nvim # sends deleted chars to blackhole register
+          mini-nvim # QoL tools (pairs, surround, etc)
+          nvim-ufo
+          todo-comments-nvim
+          undotree
+          vim-repeat # better . repetition
+          ;
+      }
+      ++ [
+        config.nvim-lib.neovimPlugins.nvim-atone
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            # asm
+            bash
+            c
+            # cmake
+            # cpp
+            kdl
+            # go
+            git_config
+            gitignore
+            gitcommit
+            html
+            # java
+            javascript
+            # jinja
+            jq
+            json
+            json5
+            just
+            kconfig
+            lua
+            markdown
+            nasm
+            nix
+            # plantuml
+            python
+            regex
+            rust
+            toml
+            typescript
+            yaml
+            zsh
+          ]
+        ))
+      ];
   };
 
   # format and lint pkgs both handled here
@@ -208,7 +214,7 @@ in
     extraPackages = lib.attrValues {
       inherit (pkgs.vimPlugins)
         nvim-lint
-       ;
+        ;
       inherit (pkgs)
         eslint
         kdlfmt
@@ -216,21 +222,21 @@ in
         shellharden
         nixfmt
         rustfmt
-        ruff #python
+        ruff # python
         yamlfmt
         prettier
         ;
     };
   };
   config.specs.git = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      gitsigns-nvim
-      neogit
-      vim-fugitive
-    ;
+        gitsigns-nvim
+        neogit
+        vim-fugitive
+        ;
     };
   };
 
@@ -247,69 +253,75 @@ in
   };
 
   config.specs.search = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      telescope-nvim
-      telescope-fzf-native-nvim
-      telescope-ui-select-nvim
-      flash-nvim
-      ;
+        telescope-nvim
+        telescope-fzf-native-nvim
+        telescope-ui-select-nvim
+        flash-nvim
+        ;
     };
   };
 
   config.specs.ui = {
-    after = ["core"];
+    after = [ "core" ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      fidget-nvim
-      lualine-nvim
-      mini-base16
-      neo-tree-nvim
-      noice-nvim
-      nvim-highlight-colors
-      nvim-notify
-      range-highlight-nvim # Highlight range as specified in commandline e.g. :10,15
-      smart-splits-nvim
-      snacks-nvim
-      trouble-nvim
-      vim-illuminate # Highlight similar words as are under the cursor
-      nvim-numbertoggle # Use relative number on focused buffer only
-      vimade # Dim unfocused buffers
-      which-key-nvim # keymap helper
-      wilder-nvim
-      zen-mode-nvim
-      ;
+        fidget-nvim
+        hardtime-nvim
+        lualine-nvim
+        mini-base16
+        neo-tree-nvim
+        noice-nvim
+        nvim-highlight-colors
+        nvim-notify
+        range-highlight-nvim # Highlight range as specified in commandline e.g. :10,15
+        smart-splits-nvim
+        snacks-nvim
+        trouble-nvim
+        vim-illuminate # Highlight similar words as are under the cursor
+        nvim-numbertoggle # Use relative number on focused buffer only
+        vimade # Dim unfocused buffers
+        which-key-nvim # keymap helper
+        wilder-nvim
+        zen-mode-nvim
+        ;
     };
   };
 
   config.specs.wiki = {
-    after = ["ui" "completion"];
+    after = [
+      "ui"
+      "completion"
+    ];
     lazy = true;
     data = lib.attrValues {
       inherit (pkgs.vimPlugins)
-      vimwiki
-    ;
+        vimwiki
+        ;
     };
   };
 
-  config.specMods = {
-    parentSpec ? null,
-    parentOpts ? null,
-    parentName ? null,
-    config,
-    ...
-  }: {
-    # add an extraPackages field to the specs themselves
-    options.extraPackages = lib.mkOption {
-      type = lib.types.listOf wlib.types.stringable;
-      default = [];
-      description = "An extraPackages spec field to put packages to suffix to the PATH";
+  config.specMods =
+    {
+      parentSpec ? null,
+      parentOpts ? null,
+      parentName ? null,
+      config,
+      ...
+    }:
+    {
+      # add an extraPackages field to the specs themselves
+      options.extraPackages = lib.mkOption {
+        type = lib.types.listOf wlib.types.stringable;
+        default = [ ];
+        description = "An extraPackages spec field to put packages to suffix to the PATH";
+      };
     };
-  };
-  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [])) [];
+  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [ ])) [ ];
 
   options.settings.neovide = lib.mkOption {
     type = lib.types.bool;
@@ -326,25 +338,28 @@ in
   };
 
   options.nvim-lib.neovimPlugins = lib.mkOption {
-     readOnly = true;
-     type = lib.types.attrsOf wlib.types.stringable;
-     # Makes plugins autobuilt from our inputs available with
-     # `config.nvim-lib.neovimPlugins.<name_without_prefix>`
-     default = config.nvim-lib.pluginsFromPrefix "plugins-" inputs;
+    readOnly = true;
+    type = lib.types.attrsOf wlib.types.stringable;
+    # Makes plugins autobuilt from our inputs available with
+    # `config.nvim-lib.neovimPlugins.<name_without_prefix>`
+    default = config.nvim-lib.pluginsFromPrefix "plugins-" inputs;
   };
 
   # allows building plugins from inputs set that aren't in nixpkgs
   options.nvim-lib.pluginsFromPrefix = lib.mkOption {
     type = lib.types.raw;
     readOnly = true;
-    default = prefix: inputs:
+    default =
+      prefix: inputs:
       lib.pipe inputs [
         builtins.attrNames
         (builtins.filter (s: lib.hasPrefix prefix s))
         (map (
-          input: let
+          input:
+          let
             name = lib.removePrefix prefix input;
-          in {
+          in
+          {
             inherit name;
             value = config.nvim-lib.mkPlugin name inputs.${input};
           }

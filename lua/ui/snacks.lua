@@ -132,13 +132,6 @@ return {
           sections = {
             { section = "header" },
             { section = "keys",  gap = 1, padding = 1 },
-            {
-            icon = " ",
-            title = "Git Status",
-            cmd = "git --no-pager diff --stat -B -M -C",
-            height = 10,
-            padding = 2,
-            },
           },
         },
 

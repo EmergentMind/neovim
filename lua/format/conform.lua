@@ -1,8 +1,7 @@
 return {
      {
         "conform.nvim",
-        auto_enable = true,
-        for_cat = 'format',
+        lazy = false,
         keys = {
             { "<leader>FF", desc = "Format File" },
         },

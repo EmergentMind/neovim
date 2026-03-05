@@ -19,8 +19,8 @@ local map = vim.keymap.set
 -- ========== Nixvim Config Shortcuts ==========
 map('n',
   '<Leader>ve',
-  '<cmd>e ~/src/nix/nix-config/home/common/core/nixvim/default.nix<CR>',
-  { desc = 'Edit nix-config/home/common/core/nixvim/default.nix' }
+  '<cmd>e ~/src/nix/neovim/<CR>',
+  { desc = 'Edit neovim flake' }
 )
 
 -- FIXME: does this work with wrapper? This is disabled because for some unknown reason nixvim doesn't symlink to .vimrc
@@ -79,11 +79,3 @@ map('i', '?', '?<C-g>U', { desc = 'Update undo when ? operator is used in Insert
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
--- Toggle wrap
-map('n', '<leader>wu', ':lua ToggleWrap()<cr>', { silent = true, desc = 'Toggle Line Wrap' })
-
--- -- Better Pasting
--- -- Paste over without yanking deleted text
-map('x', 'p', '"_dP', { desc = 'Deletes to void register and paste over' })
--- -- Delete that voids register
-map({ 'n', 'v' }, '<leader>D', '"_d', { desc = 'Delete to void register' })

@@ -22,8 +22,6 @@ opt.history = 1000
 opt.showmode = true
 -- Reload files changed outside vim
 opt.autoread = true
--- Redraw only when needed
-opt.lazyredraw = true
 -- Highlight matching braces
 opt.showmatch = true
 -- Show current line and column

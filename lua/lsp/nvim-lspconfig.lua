@@ -50,10 +50,10 @@ return {
           nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
           nmap('<leader>ds', function() Snacks.picker.lsp_symbols() end, 'Document Symbols')
 
-          nmap('<leader>ws', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace Symbols')
-          nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
-          nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
-          nmap('<leader>wl', function()
+          nmap('<leader>ls', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace Symbols')
+          nmap('<leader>la', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
+          nmap('<leader>lr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
+          nmap('<leader>ll', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, 'Workspace List Folders')
 

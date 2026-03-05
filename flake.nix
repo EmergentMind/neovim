@@ -1,13 +1,14 @@
 {
   description = "EmergentMind's Standalone Neovim Config";
 
-  outputs = {
-    self,
-    nixpkgs,
-    wrappers,
-    flake-parts,
-    ...
-  } @ inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      wrappers,
+      flake-parts,
+      ...
+    }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ wrappers.flakeModules.wrappers ];
       systems = nixpkgs.lib.platforms.all;
@@ -34,7 +35,7 @@
     };
     # FIXME: wire this up
     # potentially better undo tree for neovim
-    plugins-atone = {
+    plugins-nvim-atone = {
       url = "github:XXiaoA/atone.nvim";
       flake = false;
     };
