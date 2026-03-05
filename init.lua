@@ -1,0 +1,6 @@
+require('autocmds')
+require('keymaps')
+require('options')
+require('loader')
+nixInfo.lze.load("lsp")
+nixInfo.lze.load("plugins")

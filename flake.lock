@@ -1,0 +1,65 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1771923393,
+        "narHash": "sha256-Fy0+UXELv9hOE8WjYhJt8fMDLYTU2Dqn3cX4BwoGBos=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ea7f1f06811ce7fcc81d6c6fd4213150c23edcf2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-atone": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772368401,
+        "narHash": "sha256-mIn3vmdbI52n9bTNixp0cJtRkKCvNlr5HpFhffN8X/A=",
+        "owner": "XXiaoA",
+        "repo": "atone.nvim",
+        "rev": "08720f4b262350c1467a92c9731b817b8d2eea0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "XXiaoA",
+        "repo": "atone.nvim",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "plugins-atone": "plugins-atone",
+        "wrappers": "wrappers"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771743990,
+        "narHash": "sha256-KNTuqLytdRE0MVhM1hd3IJTlcOG6In/6klbiEDWYOaA=",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "rev": "0ea455457dac3de9129498f5c50a35153ab56484",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
