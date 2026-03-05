@@ -154,9 +154,13 @@ in
           todo-comments-nvim
           vim-repeat # better . repetition
           ;
+        inherit (config.nvim-lib.neovimPlugins)
+          nvim-atone
+          nvim-better-n
+          nvim-toggler
+          ;
       }
       ++ [
-        config.nvim-lib.neovimPlugins.nvim-atone
         (pkgs.vimPlugins.nvim-treesitter.withPlugins (
           plugins: with plugins; [
             # asm
