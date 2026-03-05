@@ -16,20 +16,20 @@
 
 local map = vim.keymap.set
 
--- see help sticky keys on windows
+-- help with fat fingers
 vim.cmd([[command! W w]])
 vim.cmd([[command! Wq wq]])
 vim.cmd([[command! WQ wq]])
 vim.cmd([[command! Q q]])
+-- sudo Save
+map("c", "w!!", "<cmd>w !sudo tee > /dev/null %<CR>", { desc = "Performs `sudo save` on privileged files" })
 
--- ========== Nixvim Config Shortcuts ==========
+-- Config Shortcuts
 map("n", "<Leader>ve", "<cmd>e ~/src/nix/neovim/<CR>", { desc = "Edit neovim flake" })
-
--- FIXME: does this work with wrapper? This is disabled because for some unknown reason nixvim doesn't symlink to .vimrc
+-- FIXME: setup hot reloads with wrapper-modules
 -- map('n', '<Leader>vr', '<cmd>so $MYVIMRC<CR>', { desc = 'Reload vimrc' })
 
 -- Movement
---FIXME: 'K' collides with lsp hover bind
 map("n", "j", "gj", { desc = "Move down through wrapped lines" })
 map("n", "k", "gk", { desc = "Move up through wrapped lines" })
 map("n", "<C-j>", "<C-d>", { desc = "Add bind for 1/2 page down" })
@@ -40,10 +40,10 @@ map("n", "<C-k>", "<C-u>", { desc = "Add bind for 1/2 page up" })
 -- map('n', '$', '<nop>')
 
 -- Move Lines
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move line up" })
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
+map("n", "<leader>K", "<cmd>m .-2<cr>==", { desc = "Move line up" })
+map("n", "<leader>J", "<cmd>m .+1<cr>==", { desc = "Move line down" })
+map("v", "<leader>K", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
+map("v", "<leader>J", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
 
 -- Buffer navigation
 map("n", "<Leader>-", ":b#<CR>", { desc = "Switch to the previous buffer" })
@@ -67,9 +67,6 @@ map("i", "<C-a>", "<cmd> norm! ggVG<cr>", { desc = "Select all lines in buffer" 
 
 -- Substitute current word
 map("n", "<Leader>sr", ":%s/<C-r><C-w>//g<Left><Left>", { desc = "Substitute the word you are currently on" })
-
--- sudo Save
-map("c", "w!!", "<cmd>w !sudo tee > /dev/null %<CR>", { desc = "Performs `sudo save` on privileged files" })
 
 -- Undo and Redo
 -- These create undo breakpoints when typing punctuation in insert mode

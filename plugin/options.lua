@@ -80,14 +80,13 @@ opt.expandtab = true
 opt.cindent = true
 
 -- ================ Folds ============================
--- FIXME: This folds section could be replaced with custom functions at some
--- point. See ./plugins/syntax . also some of this might be handled by ufo
+-- NOTE: see treesitter fold binds in lua/plugins/syntax as well
+-- as well as ufo binds in lua/plugins/ui/ufo.lua
+
 -- fold based on indent
 opt.foldmethod = "indent"
 -- deepest fold is 3 levels
 opt.foldnestmax = 3
--- don't fold by default
-opt.foldenable = false
 
 -- ================ Splits ============================
 opt.splitbelow = true
@@ -127,11 +126,11 @@ opt.writebackup = false
 -- swap
 opt.directory = "$HOME/.vim/swap//,/tmp//,."
 
--- FIXME: Better spot for this?
 -- ================ Persistent Undo ==================
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
--- FIXME: enable persistent_undo
+-- See also lua/plugins/editing/atone.lua
+
 if fn.has("persistent_undo") == 1 then
   local undo_dir = fn.expand("~/.vim/backups")
 

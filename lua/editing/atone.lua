@@ -1,3 +1,4 @@
+-- undo-tree for neovim
 return {
   "nvim-atone",
   event = "VimEnter",

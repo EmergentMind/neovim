@@ -1,4 +1,4 @@
--- FIXME: investigate other mini tools
+-- TODO: investigate other mini tools
 return {
   {
     "mini.nvim",
@@ -8,18 +8,17 @@ return {
       require("mini.ai").setup()
       require("mini.comment").setup()
       require("mini.pairs").setup()
-      -- FIXME: surround interferes with `s` and needs some tweaking
-      -- or get used to using r instead of s for old use
-      require("mini.surround").setup({})
-      --   add = "<leader>sa",
-      --   delete = "<leader>sd",
-      --   find = "<leader>sf",
-      --   find_left = "<leader>sF",
-      --   highlight = "<leader>sh",
-      --   replace = "<leader>sr",
-      --   suffix_last = "<leader>sl",
-      --   suffix_next = "<leader>sn",
-      -- })
+      --NOTE: this supersedes the normal `s` key, use `r` instead
+      require("mini.surround").setup({
+        add = "sa",
+        delete = "sd",
+        find = "sf",
+        find_left = "sF",
+        highlight = "sh",
+        replace = "sr",
+        suffix_last = "sl",
+        suffix_next = "sn",
+      })
     end,
   },
 }

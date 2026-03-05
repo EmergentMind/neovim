@@ -51,6 +51,7 @@ return {
     after = function(name)
       -- UFO needs these options
       -- vim.o.foldcolumn = '1'
+      -- ensure folds are open to begin with
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
