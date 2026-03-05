@@ -1,6 +1,6 @@
 return {
   {
-    "blink.cmp.conventional.commits",
+    "blink-cmp-conventional-commits",
     dep_of = { "blink.cmp" },
   },
   {
