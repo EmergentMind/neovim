@@ -15,6 +15,7 @@ opt.hidden = true
 -- show line numbers
 opt.number = true
 opt.termguicolors = true
+-- Keep signcolumn on by default
 opt.signcolumn = "yes"
 -- show relative linenumbers
 opt.relativenumber = false
@@ -141,4 +142,22 @@ if fn.has("persistent_undo") == 1 then
 
   opt.undodir = undo_dir
   opt.undofile = true
+end
+
+vim.g.netrw_liststyle = 0
+vim.g.netrw_banner = 0
+
+-- Default: "ltToOCF"
+-- Disable:
+-- s - search hit TOP
+-- W - written messages
+-- I - intro messages
+vim.opt.shortmess:append("sIW")
+
+if vim.g.neovide then
+  -- When using rounded borders lualine/tabs clip
+  vim.g.neovide_padding_top = 4
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 2
+  vim.g.neovide_padding_left = 7
 end
