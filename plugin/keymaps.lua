@@ -46,14 +46,28 @@ map("n", "<leader>J", "<cmd>m .+1<cr>==", { desc = "Move line down" })
 map("v", "<leader>K", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
 map("v", "<leader>J", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
 
--- Buffer navigation
-map("n", "<Leader>-", ":b#<CR>", { desc = "Switch to the previous buffer" })
+-- Window/split motions
+-- See smart-splits.nvim maps instead
 
--- Window navigation
-map("n", "<Leader>h", "<C-W>h", { desc = "Move the cursor one window left" })
-map("n", "<Leader>j", "<C-W>j", { desc = "Move the cursor window down" })
-map("n", "<Leader>k", "<C-W>k", { desc = "Move the cursor window up" })
-map("n", "<Leader>l", "<C-W>l", { desc = "Move the cursor window right" })
+-- Buffer motions
+l = "<leader>b"
+map("n", "<leader>-", "<cmd>b#<CR>", { desc = 'Most recent buffer' })
+map("n", l .. "h", "<cmd>bprev<CR>", { desc = 'Previous buffer' })
+map("n", l .. "l", "<cmd>bnext<CR>", { desc = 'Next buffer' })
+map("n", l .. "s", "<cmd>ls<CR>", { desc = 'List buffers' })
+map("n", l .. "x", "<cmd>bdelete<CR>", { desc = 'Delete buffer' })
+
+-- Tab motions
+l = "<leader><tab>"
+map("n", l .. "e", ":tablast", { noremap = true, silent = true, desc = 'Go to last tab' })
+map("n", l .. "0", ":tabfirst", { noremap = true, silent = true, desc = 'Go to first tab' })
+map("n", l .. "h", "gT", { noremap = true, silent = true, desc = 'Go to previous tab' })
+map("n", l .. "l", "gt", { noremap = true, silent = true, desc = 'Go to next tab' })
+map("n", l .. ".", "g<tab>", { noremap = true, silent = true, desc = 'Go to last accessed tab page' })
+map("n", l .. "<tab>", ":tabnew<CR>", { noremap = true, silent = true, desc = 'Open new tab' })
+map("n", l .. "x", ":tabclose", { noremap = true, silent = true, desc = 'Close current tab' })
+map("n", l .. "H", ":-tabmove", { noremap = true, silent = true, desc = 'Move tab to left' })
+map("n", l .. "L", ":+tabmove", { noremap = true, silent = true, desc = 'Move tab to right' })
 
 -- Window management
 map("n", "<leader>wd", "<C-W>c", { silent = true, desc = "Delete window" })

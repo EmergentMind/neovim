@@ -22,13 +22,13 @@ return {
       { "<F5>", desc = "DAP: Step Back" },
       { "<F7>", desc = "DAP: Step Last" },
       { "<F12>", desc = "DAP: Restart" },
-      { "<leader>bb", desc = "DAP: Toggle Breakpoint" },
-      { "<leader>bB", desc = "DAP: Set Breakpoint" },
-      { "<leader>br", desc = "DAP: Run to cursor" },
-      { "<leader>bu", desc = "DAP: Toggle DAP-UI" },
-      { "<leader>bh", desc = "DAP: Hover widgets" },
-      { "<leader>bp", desc = "DAP: Preview widgets" },
-      { "<leader>bs", desc = "DAP: Widget scopes" },
+      { "<leader>db", desc = "DAP: Toggle Breakpoint" },
+      { "<leader>dB", desc = "DAP: Set Breakpoint" },
+      { "<leader>dr", desc = "DAP: Run to cursor" },
+      { "<leader>du", desc = "DAP: Toggle DAP-UI" },
+      { "<leader>dh", desc = "DAP: Hover widgets" },
+      { "<leader>dp", desc = "DAP: Preview widgets" },
+      { "<leader>ds", desc = "DAP: Widget scopes" },
     },
     dependencies = {
       "nvim-dap-ui",
@@ -47,15 +47,15 @@ return {
       vim.keymap.set("n", "<F5>", dap.step_back, { desc = "DAP: Step Back" })
       vim.keymap.set("n", "<F7>", dap.step_back, { desc = "DAP: Step Last" })
       vim.keymap.set("n", "<F12>", dap.restart, { desc = "DAP: Restart" })
-      vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-      vim.keymap.set("n", "<leader>bB", function()
+      vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+      vim.keymap.set("n", "<leader>dB", function()
         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
       end, { desc = "Debug: Set Breakpoint" })
-      vim.keymap.set("n", "<leader>br", dap.run_to_cursor, { desc = "DAP: Toggle Breakpoint" })
-      vim.keymap.set("n", "<leader>bu", dapui.toggle, { desc = "DAP: Toggle DAP-UI" })
-      vim.keymap.set("n", "<leader>bh", dapui.widgets.hover, { desc = "DAP: Hover widgets" })
-      vim.keymap.set("n", "<leader>bp", dapui.widgets.preview, { desc = "DAP: Preview widgets" })
-      vim.keymap.set("n", "<leader>bs", dapui.widgets.scopes, { desc = "DAP: Widget scopes" })
+      vim.keymap.set("n", "<leader>dr", dap.run_to_cursor, { desc = "DAP: Toggle Breakpoint" })
+      vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP: Toggle DAP-UI" })
+      vim.keymap.set("n", "<leader>dh", dapui.widgets.hover, { desc = "DAP: Hover widgets" })
+      vim.keymap.set("n", "<leader>dp", dapui.widgets.preview, { desc = "DAP: Preview widgets" })
+      vim.keymap.set("n", "<leader>ds", dapui.widgets.scopes, { desc = "DAP: Widget scopes" })
 
       dap.listeners.before.attach["dapui_config"] = dapui.open
       dap.listeners.before.launch["dapui_config"] = dapui.open

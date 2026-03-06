@@ -34,7 +34,7 @@ end
 local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
-    require('telescope.builtin').live_grep({
+    require("telescope.builtin").live_grep({
       search_dirs = { git_root },
     })
   end
@@ -42,7 +42,7 @@ end
 
 local telescope_ignore_patterns = {
   -- Ignore nix lock files
-  "%.lock"
+  "%.lock",
 }
 
 -- Allows you to toggle the search to include hidden files
@@ -74,9 +74,10 @@ end
 return {
   {
     "telescope.nvim",
-    category = 'search',
+    category = "search",
     cmd = { "Telescope", "LiveGrepGitRoot" },
-    on_require = { "telescope", },
+    on_require = { "telescope" },
+    -- stylua: ignore start
     keys = {
       {
         "<leader>/",
@@ -123,14 +124,15 @@ return {
       -- Diagnostics
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>",     mode = { "n" }, desc = "Diagnostics" },
     },
+    -- stylua: ignore end
     after = function(plugin)
       local actions = require("telescope.actions")
-      require('telescope').setup {
+      require("telescope").setup({
         defaults = {
           -- path_display = { "truncate" },
           -- sorting_strategy = "ascending",
           file_ignore_patterns = telescope_ignore_patterns,
-          layout_strategy = 'flex', -- Change layout depending on if on laptop screen or dualup
+          layout_strategy = "flex", -- Change layout depending on if on laptop screen or dualup
           layout_config = {
             flex = {
               flip_columns = 180,
@@ -139,7 +141,7 @@ return {
             vertical = {
               preview_height = 0.75,
               height = 0.95,
-            }
+            },
           },
         },
         pickers = {
@@ -165,9 +167,9 @@ return {
             override_file_sorter = true,
             case_mode = "smart_case",
           },
-        }
-      }
-      vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+        },
+      })
+      vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
     end,
   },
   {
