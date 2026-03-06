@@ -19,7 +19,34 @@ let
 in
 {
   imports = [ wlib.wrapperModules.neovim ];
-  config.settings.config_directory = "${configSource}";
+
+  options.settings.dev_mode = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
+
+  # Have neovim use immutable config from /nix/store
+  options.settings.wrapped_config = lib.mkOption {
+    type = lib.types.either wlib.types.stringable lib.types.luaInline;
+    default = "${configSource}";
+  };
+
+  # Have neovim use raw config folder for faster prototyping
+  options.settings.unwrapped_config = lib.mkOption {
+    type = lib.types.either wlib.types.stringable lib.types.luaInline;
+    default = lib.generators.mkLuaInline "vim.uv.os_homedir() .. '/dev/nix/neovim'";
+  };
+
+  config.settings.config_directory =
+    if config.settings.dev_mode then
+      config.settings.unwrapped_config
+    else
+      config.settings.wrapped_config;
+
+  config.settings.aliases = [
+    "vi"
+    "vim"
+  ];
 
   # NOTE: Specs are enabled by default
   config.specs.core = {
@@ -321,11 +348,11 @@ in
   # Build a neovide wrapper
   config.hosts.neovide.nvim-host.enable = config.settings.neovide;
 
-  # Inform our lua of which top level specs are enabled
+  # Inform lua which top level specs are enabled
   options.settings.cats = lib.mkOption {
     readOnly = true;
     type = lib.types.attrsOf lib.types.bool;
-    default = builtins.mapAttrs (_: v: v.enable) config.specs;
+    default = lib.mapAttrs (_: v: v.enable) config.specs;
   };
 
   options.nvim-lib.neovimPlugins = lib.mkOption {
@@ -336,7 +363,8 @@ in
     default = config.nvim-lib.pluginsFromPrefix "plugins-" inputs;
   };
 
-  # allows building plugins from inputs set that aren't in nixpkgs
+  # This is from the official template and allows you to build plugins
+  # that aren't in nixpkgs yet.
   options.nvim-lib.pluginsFromPrefix = lib.mkOption {
     type = lib.types.raw;
     readOnly = true;
