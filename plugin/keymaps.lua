@@ -1,3 +1,4 @@
+-- stylua: ignore start
 -- NOTE: Plugin-specific keymaps are located in the plugin file
 --
 -- ========== Modes Legend ==========
@@ -16,7 +17,7 @@
 
 local map = vim.keymap.set
 
--- help with fat fingers
+-- typo tolerance for :W and friends
 vim.cmd([[command! W w]])
 vim.cmd([[command! Wq wq]])
 vim.cmd([[command! WQ wq]])
@@ -78,3 +79,4 @@ map("i", "?", "?<C-g>U", { desc = "Update undo when ? operator is used in Insert
 -- Better Indenting (stay in visual mode)
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+-- stylua: ignore end
