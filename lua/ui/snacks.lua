@@ -4,6 +4,7 @@ return {
     lazy = false,
     event = "DeferredUIEnter",
     after = function(plugin)
+      local dashboardImage = "~/downloads/Netrunner-Jinteki.net-1-Intro-2667330870.jpg"
       require("snacks").setup({
         -- Only showing enabled tools.
         -- See https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
@@ -11,8 +12,6 @@ return {
         -- FIXME: seriously consider the following:
         -- GitHub CLI integration
         -- gh = { enabled = true },
-        -- Gitbrowse
-        -- gitbrowse = { enabled = true },
         -- Quick load
         -- quickfile = { enabled = true },
 
@@ -68,40 +67,16 @@ return {
                 action = ":Telescope help_tags",
               },
             },
+
             header = [[
-                           ..',;:::::::;,'..
-                     .':loollllc:::::::clllllol;.
-                  .coooc;..                 .';lool;.
-               .cdoc'.                           .,ldo:.
-             ,odc.               .;;,,,,,';odlcll:'..,oxl'
-           ,dd;       .,;;::'. .lXWWWWWWWNWWWMWWWWNO:. .cxo.
-         .dx;   ..'';xXWWWWWN0k0NWWMWWWWWWWWWWWWWNXNWXk:..lkc.
-        ;ko.   :0XNNNWWWWWMWWWMMWWWWWWNWXkxOXWWNOo:,;lo:.  'xx'
-       ck:     cNWWWWWWMMMWWW0dkNWWWNO0Xl'lx0NOdk0Kdod;.    .ok,
-      lO;      :XMWMMWWWMMWWWx..;l:;,cOXx:,'kXdxNWMMMWNKo.    lO,
-     :O;       ;doollkXWMMWMWKo.     .;OKllOKdd0XWMMWWWXo.     oO'
-    'Ol               .,:cloxOk:,,;;dKKX0dxkl'oNWWWMXo:;,.     .xx.
-    ok.                 'do'.'::loxOXWKk; 'd0KNWWWWWNx.         ;0:
-   'Ol                 .oXWx.  .;:;:oKWx..dNWWMMWWWXOl.         .xx.
-   :0;                  ..;c:;,,:dkxokNX:.kWWMMMWWNd..:x0x,      lO'
-   lO'                 ,xdo:..    ,lco0WXo;oXMWMMWXc.oNWWNOl.    :0,
-   lO'                .okk00o'''     .'cKW0OKx::c:. .dWWKl'.     :0;
-   c0,                    .lXX0l        oWWXkoolc::;:ll,.        cO'
-   ,0c                     .',cdd;..   ;0WXxldl'...;:.';.        dk.
-   .xx.                        .cOxoxkOXWXkdoc:cclol;           'Ol
-    :0:                          .lOXWMXo,';coo;...             oO.
-     ok.                        .cOXNNx'                       :O:
-     .xx.                     .cKWWMXl.                       ,Ol
-      .xx.                   .dNWWXOc                        ;kl
-       .ok,        .,;cloddxx0NWWMNK0kkxddolc:,..          .ck:
-         ;ko.   .oOXWWWMWWMMMMWMMWWWMMWMMMMMWWWX0x'       'dx'
-          .lkl. .cxOKNWWMWMMMWWMMWMMMWWWWWMWWNX0xl.     'ox:.
-            .oxl'   ..,;:clloooddddoooollc:;,'..      ,oxc.
-              .cddc'                              .,ldo;.
-                 'cool:'.                     .,codo:.
-                    .,cooolc:;''.......',;:lolloc'.
-                         .';clllllllllllll:;'.
-]],
+ _______ _     _ _______      _  _  _ _______ __   __       _____  _     _ _______
+    |    |_____| |______      |  |  | |_____|   \_/        |     | |     |    |   
+    |    |     | |______      |__|__| |     |    |         |_____| |_____|    |   
+                                                                                  
+      _____ _______      _______ _     _  ______  _____  _     _  ______ _     _  
+        |   |______         |    |_____| |_____/ |     | |     | |  ____ |_____|  
+      __|__ ______|         |    |     | |    \_ |_____| |_____| |_____| |     |  
+                                                                                  ]],
           },
           formats = {
             icon = function(item)
@@ -128,10 +103,61 @@ return {
             end,
           },
           sections = {
-            { section = "header" },
-            { section = "keys", gap = 1, padding = 1 },
+            {
+              section = "terminal",
+              cmd = ", chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 70x70 --symbols ascii -c none; sleep .1",
+              height = 35,
+              width = 70,
+              padding = 1,
+            },
+            {
+              section = "header",
+            },
+            {
+              icon = " ",
+              title = "Git Status",
+              section = "terminal",
+              enabled = function()
+                return Snacks.git.get_root() ~= nil
+              end,
+              cmd = "git status --short --branch --renames",
+              height = 5,
+              padding = 1,
+              ttl = 5 * 60,
+              indent = 3,
+            },
+            -- {
+            --   icon = " ",
+            --   title = "Git Status",
+            --   section = "terminal",
+            --   enabled = function()
+            --     return Snacks.git.get_root() ~= nil
+            --   end,
+            --   cmd = "git --no-pager diff --stat -B -M -C",
+            --   height = 5,
+            --   padding = 1,
+            --   ttl = 5 * 60,
+            --   indent = 3,
+            -- },
+            {
+              icon = " ",
+              title = "Branches",
+              section = "terminal",
+              enabled = function()
+                return Snacks.git.get_root() ~= nil
+              end,
+              cmd = "git branch --list",
+              height = 5,
+              padding = 1,
+              ttl = 5 * 60,
+              indent = 3,
+            },
           },
         },
+        -- Git
+        git = { enabled = true },
+        -- Gitbrowse
+        gitbrowse = { enabled = true },
 
         -- picker/explorer
         -- FIXME: currently LPSs uses this but it may be worth replacing
