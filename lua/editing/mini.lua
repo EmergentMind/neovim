@@ -7,7 +7,6 @@ return {
     after = function(name)
       require("mini.ai").setup()
       require("mini.comment").setup()
-      require("mini.pairs").setup()
       --NOTE: this supersedes the normal `s` key, use `r` instead
       require("mini.surround").setup({
         add = "sa",
