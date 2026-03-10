@@ -93,4 +93,23 @@ map("i", "?", "?<C-g>U", { desc = "Update undo when ? operator is used in Insert
 -- Better Indenting (stay in visual mode)
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+--[[
+ Experimental keymaps
+
+ Stuff I'm trying, but don't know if I'll keep
+]]
+
+-- toggle spellcheck
+vim.keymap.set("n", "<leader>ts", function()
+  vim.opt.spell = not vim.opt.spell:get()
+end, { desc = "Toggle spell checking" })
+
+-- dismiss/clear notifications
+vim.keymap.set("n", "<Esc>", function()
+  require("noice").cmd("dismiss")
+  require("notify").dismiss({ silent = true })
+  vim.cmd("noh")
+end, { desc = "Dismiss all notifications and clear hlsearch" })
+
 -- stylua: ignore end

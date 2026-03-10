@@ -4,11 +4,6 @@ return {
     event = "DeferredUIEnter",
     after = function(plugin)
       require("noice").setup({
-
-        vim.keymap.set("n", "<Esc>", function()
-          require("noice").cmd("dismiss")
-        end, { desc = "Dismiss Noice Messages" }),
-
         cmdline = {
           -- view = "cmdline",
           view = "cmdline_popup",
