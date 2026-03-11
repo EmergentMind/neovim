@@ -1,11 +1,18 @@
 return {
   {
-    -- FIXME: lsps all need to be reworked and verified
     "pylsp",
     lsp = {
+      filetypes = { "python" },
+      root_markers = {
+        "pyproject.toml",
+        "setup.py",
+        "setup.cfg",
+        "requirements.txt",
+        "Pipfile",
+        ".git",
+      },
       settings = {
-        -- Explicit empty entry like this seems to be needed for it to attach
-        pylsp = {}
+        pylsp = {},
       },
     },
   },
