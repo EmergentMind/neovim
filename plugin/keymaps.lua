@@ -51,7 +51,7 @@ map("v", "<leader>J", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
 
 -- Buffer motions
 l = "<leader>b"
-map("n", "<leader>-", "<cmd>b#<CR>", { desc = 'Most recent buffer' })
+map("n", l .. ".", "<cmd>b#<CR>", { desc = 'Most recent buffer' })
 map("n", l .. "h", "<cmd>bprev<CR>", { desc = 'Previous buffer' })
 map("n", l .. "l", "<cmd>bnext<CR>", { desc = 'Next buffer' })
 map("n", l .. "s", "<cmd>ls<CR>", { desc = 'List buffers' })

@@ -69,14 +69,9 @@ return {
             },
 
             header = [[
- _______ _     _ _______      _  _  _ _______ __   __       _____  _     _ _______
-    |    |_____| |______      |  |  | |_____|   \_/        |     | |     |    |   
-    |    |     | |______      |__|__| |     |    |         |_____| |_____|    |   
-                                                                                  
-      _____ _______      _______ _     _  ______  _____  _     _  ______ _     _  
-        |   |______         |    |_____| |_____/ |     | |     | |  ____ |_____|  
-      __|__ ______|         |    |     | |    \_ |_____| |_____| |_____| |     |  
-                                                                                  ]],
+ ______ _     _  _____  _______ _______
+|  ____ |_____| |     | |______    |   
+|_____| |     | |_____| ______|    |   ]],
           },
           formats = {
             icon = function(item)
@@ -105,7 +100,7 @@ return {
           sections = {
             {
               section = "terminal",
-              cmd = ", chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 --symbols ascii -c none; sleep .1",
+              cmd = ", chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 -c 2; sleep .1",
               height = 35,
               width = 50,
               padding = 1,
