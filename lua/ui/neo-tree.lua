@@ -4,13 +4,20 @@ return {
     cmd = "Neotree",
     keys = {
       { "<leader>ee", "<cmd>Neotree toggle reveal_force_cwd<cr>", mode = { "n" }, desc = "File explorer (cwd)" },
-      { "<leader>eE", "<cmd>Neotree toggle<cr>",                  mode = { "n" }, desc = "File explorer" },
-      { "<leader>eb", "<cmd>Neotree buffers<cr>",                 mode = { "n" }, desc = "Buffer explorer" },
-      { "<leader>eg", "<cmd>Neotree git_status<cr>",              mode = { "n" }, desc = "Git explorer" },
+      { "<leader>eE", "<cmd>Neotree toggle<cr>", mode = { "n" }, desc = "File explorer" },
+      { "<leader>eb", "<cmd>Neotree buffers<cr>", mode = { "n" }, desc = "Buffer explorer" },
+      { "<leader>eg", "<cmd>Neotree git_status<cr>", mode = { "n" }, desc = "Git explorer" },
     },
     after = function(plugin)
       require("neo-tree").setup({
-        enable_diagnostics = true,
+        event_handlers = {
+          {
+            event = "neo_tree_buffer_enter",
+            handler = function(arg)
+              vim.cmd([[ setlocal relativenumber ]])
+            end,
+          },
+        },
         enable_git_status = true,
         enable_modified_markers = true,
         enable_refresh_on_write = true,
@@ -45,7 +52,7 @@ return {
         buffers = {
           bind_to_cwd = false,
           follow_current_file = {
-            enabled = true
+            enabled = true,
           },
         },
         window = {
