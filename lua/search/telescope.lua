@@ -47,7 +47,7 @@ local telescope_ignore_patterns = {
 
 -- Allows you to toggle the search to include hidden files
 -- From https://github.com/nvim-telescope/telescope.nvim/issues/2874#issuecomment-1900967890
-local function my_find_files(opts, no_ignore)
+local function custom_find_files(opts, no_ignore)
   opts = opts or {}
   no_ignore = vim.F.if_nil(no_ignore, false)
   opts.attach_mappings = function(_, map)
@@ -55,7 +55,7 @@ local function my_find_files(opts, no_ignore)
       local prompt = require("telescope.actions.state").get_current_line()
       require("telescope.actions").close(prompt_bufnr)
       no_ignore = not no_ignore
-      my_find_files({ default_text = prompt }, no_ignore)
+      custom_find_files({ default_text = prompt }, no_ignore)
     end)
     return true
   end
@@ -105,7 +105,7 @@ return {
       },
       { "<leader>fp", live_grep_git_root,                   mode = { "n" }, desc = "[F]ind in git [P]roject root" },
       -- File pickers
-      { "<leader>ff", "<cmd>Telescope find_files<cr>",      mode = { "n" }, desc = "[F]ind [F]iles" },
+      { "<leader>ff", custom_find_files,                       mode = { "n" }, desc = "[F]ind [F]iles" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",         mode = { "n" }, desc = "[F]ind in [B]uffers" },
       { "<leader>f.", "<cmd>Telescope oldfiles<cr>",        mode = { "n" }, desc = "[F]ind in recent files ('.' for repeat)" },
       { "<leader>fr", "<cmd>Telescope resume<cr>",          mode = { "n" }, desc = "[F]ind [R]esume" },
