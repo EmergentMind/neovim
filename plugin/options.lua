@@ -38,7 +38,6 @@ opt.list = true
 opt.listchars = {
   --tab = '» ',
   trail = "·",
-  --nbsp = '␣'
 }
 
 -- ========= Clipboard ==========

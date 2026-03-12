@@ -5,8 +5,8 @@ return {
     after = function(plugin)
       require("noice").setup({
         cmdline = {
-          -- view = "cmdline",
-          view = "cmdline_popup",
+          view = "cmdline",
+          -- view = "cmdline_popup",
         },
         lsp = {
           override = {
