@@ -80,8 +80,7 @@ opt.expandtab = true
 opt.cindent = true
 
 -- ================ Folds ============================
--- NOTE: see treesitter fold binds in lua/plugins/syntax as well
--- as well as ufo binds in lua/plugins/ui/ufo.lua
+-- NOTE: see ufo binds in lua/plugins/ui/ufo.lua
 
 -- fold based on indent
 opt.foldmethod = "indent"

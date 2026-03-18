@@ -100,7 +100,7 @@ return {
           sections = {
             {
               section = "terminal",
-              cmd = ", chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 -c 2; sleep .1",
+              cmd = "chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 -c 2; sleep .1",
               height = 35,
               width = 50,
               padding = 1,

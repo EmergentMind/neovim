@@ -1,62 +1,75 @@
+local MP = '' --[[ MP + relpath() trick explained in introdus repo
+                   Not set to ... here because base init.lua isn't passed an arg ]] --
+
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
-vim.loader.enable() -- bytecode caching
 
--- See the auto-loaded files in plugin/ for options, keybinds, etc.
+-- This config is derived from the introdus neovim wrapper
+-- so have introdus set things up for us
+local introdus_config = os.getenv('NVIM_BASE_CONFIG')
 
-require('nixinfo')
+if introdus_config then
+  -- Prepend so B's lua/ directory is searchable immediately
+  vim.opt.rtp:prepend(introdus_config)
 
-nixInfo.lze.load {
+  -- Prepend to packpath so B's plugins (if any) are found
+  vim.opt.packpath:prepend(introdus_config)
+
+  -- Handle the 'after' directory correctly
+  local introdus_after = introdus_config .. '/after'
+  if vim.fn.isdirectory(introdus_after) == 1 then
+    vim.opt.rtp:append(introdus_after)
+  end
+  require('introdus')
+else
+  print([[ERROR: This config cannot run without introdus. 
+      Use settings.extraConfig in your wrapper to specify the introdus path]])
+end
+
+-- NOTE: See https://codeberg.org/fidgetingbits/introdus/src/branch/aa/wrappers/neovim/
+-- for more shared config and plugins
+
+-- Load all the plugins/lsps from lua/
+nixInfo.lze.load({
   {
-    import = "ai",
-    category = "ai",
+    import = MP:relpath('ai'),
+    category = 'ai',
   },
   {
-    import = "completion",
-    category = "completion",
+    import = MP:relpath('completion'),
+    category = 'completion',
+  },
+  -- FIXME: enable this and fix it
+  -- {
+  --   import = MP:relpath('debug'),
+  --   category = 'debug',
+  -- },
+  {
+    import = MP:relpath('editing'),
+    category = 'editing',
   },
   {
-    import = "debug",
-    category = "debug"
+    import = MP:relpath('format'),
+    category = 'format',
   },
   {
-    import = "editing",
-    category = "editing",
+    import = MP:relpath('git'),
+    category = 'git',
   },
   {
-    import = "format",
-    category = "format",
+    import = MP:relpath('lsp'),
+    category = 'lsp',
   },
   {
-    import = "git",
-    category = "git",
+    import = MP:relpath('markdown'),
+    category = 'markdown',
   },
   {
-    import = "markdown",
-    category = "lint",
+    import = MP:relpath('search'),
+    category = 'search',
   },
   {
-    import = "lint",
-    category = "lint",
+    import = MP:relpath('ui'),
+    category = 'ui',
   },
-  {
-    import = "lsp",
-    category = "lsp",
-  },
-  {
-    import = "search",
-    category = "search",
-  },
-  {
-    import = "syntax",
-    category = "syntax",
-  },
-  {
-    import = "ui",
-    category = "ui",
-  },
-  {
-    import = "wiki",
-    category = "wiki",
-  },
-}
+})

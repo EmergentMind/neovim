@@ -15,20 +15,26 @@
 --    "l" Insert, command-line and lang-arg mode
 --    "c" Command-line mode
 
+local nv  = { "n", "v" }
+local nvi = { "n", "v", "i" }
 local map = vim.keymap.set
 
--- typo tolerance for :W and friends
-vim.cmd([[command! W w]])
-vim.cmd([[command! Wq wq]])
-vim.cmd([[command! WQ wq]])
-vim.cmd([[command! Q q]])
+-- typo tolerant command abbreviations for :W and friends
+vim.keymap.set("ca", "W", "w")
+-- Also see ./../lua/ui/confirm-quit.lua:13
+if not vim.g.neovide then
+  vim.keymap.set("ca", "Wq", "wq")
+  vim.keymap.set("ca", "WQ", "wq")
+  vim.keymap.set("ca", "Q", "q")
+end
+vim.keymap.set("n", "qq", vim.cmd.quitall, {noremap = true, silent = true})
+
 -- sudo Save
 map("c", "w!!", "<cmd>w !sudo tee > /dev/null %<CR>", { desc = "Performs `sudo save` on privileged files" })
 
 -- Config Shortcuts
-map("n", "<Leader>ve", "<cmd>e ~/src/nix/neovim/<CR>", { desc = "Edit neovim flake" })
--- FIXME: setup hot reloads with wrapper-modules
--- map('n', '<Leader>vr', '<cmd>so $MYVIMRC<CR>', { desc = 'Reload vimrc' })
+map("n", "<Leader><leader>e", "<cmd>e ~/src/nix/neovim/<CR>", { desc = "Edit neovim flake" })
+map("n", "<leader><leader>r", ":ReloadConfig<CR>", {noremap = true, silent = true})
 
 -- Movement
 map("n", "j", "gj", { desc = "Move down through wrapped lines" })

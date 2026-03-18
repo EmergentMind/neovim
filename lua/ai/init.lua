@@ -1,4 +1,5 @@
+local MP = ...
 return {
-  {import = "ai.avante"}
+  { import = MP:relpath('codecompanion') },
+  { import = MP:relpath('avante') },
 }
-

@@ -1,6 +1,6 @@
+local MP = ...
 return {
-  { import = "search.telescope" },
-
   -- FIXME: enable this with better colouring. Too distracting atm
-  -- { import = "search.flash" };
+  -- { import = MP:relpath('flash') },
+  { import = MP:relpath('telescope') },
 }

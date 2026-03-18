@@ -1,0 +1,33 @@
+{
+  "name": "fidgeting-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global",
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      }
+    ]
+  }
+}
