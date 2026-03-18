@@ -1,11 +1,11 @@
 return {
   {
-    "snacks.nvim",
+    'snacks.nvim',
     lazy = false,
-    event = "DeferredUIEnter",
+    event = 'DeferredUIEnter',
     after = function(plugin)
-      local dashboardImage = "~/downloads/Netrunner-Jinteki.net-1-Intro-2667330870.jpg"
-      require("snacks").setup({
+      local dashboardImage = '~/downloads/Netrunner-Jinteki.net-1-Intro-2667330870.jpg'
+      require('snacks').setup({
         -- Only showing enabled tools.
         -- See https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
         -- for available tools
@@ -31,40 +31,40 @@ return {
             pick = nil,
             keys = {
               {
-                icon = " ",
-                desc = "New File",
-                key = ":ene",
-                action = ":ene | startinsert",
+                icon = ' ',
+                desc = 'New File',
+                key = ':ene',
+                action = ':ene | startinsert',
               },
               {
-                icon = " ",
-                desc = "Find File",
-                key = "<leader>ff",
-                action = ":Telescope find_files",
+                icon = ' ',
+                desc = 'Find File',
+                key = '<leader>ff',
+                action = ':Telescope find_files',
               },
               {
-                icon = " ",
-                desc = "Find Buffer",
-                key = "<leader>fb",
-                action = ":Telescope buffers",
+                icon = ' ',
+                desc = 'Find Buffer',
+                key = '<leader>fb',
+                action = ':Telescope buffers',
               },
               {
-                icon = " ",
-                desc = "Live grep",
-                key = "<leader>fg",
-                action = ":Telescope live_grep",
+                icon = ' ',
+                desc = 'Live grep',
+                key = '<leader>fg',
+                action = ':Telescope live_grep',
               },
               {
-                icon = " ",
-                desc = "Recent Files",
-                key = "<leader>fr",
-                action = ":Telescope oldfiles",
+                icon = ' ',
+                desc = 'Recent Files',
+                key = '<leader>fr',
+                action = ':Telescope oldfiles',
               },
               {
-                icon = "󰮥 ",
-                desc = "Help tags",
-                key = "<leader>fh",
-                action = ":Telescope help_tags",
+                icon = '󰮥 ',
+                desc = 'Help tags',
+                key = '<leader>fh',
+                action = ':Telescope help_tags',
               },
             },
 
@@ -75,48 +75,50 @@ return {
           },
           formats = {
             icon = function(item)
-              if item.file and item.icon == "file" or item.icon == "directory" then
+              if item.file and item.icon == 'file' or item.icon == 'directory' then
                 return Snacks.dashboard.icon(item.file, item.icon)
               end
-              return { item.icon, width = 2, hl = "icon" }
+              return { item.icon, width = 2, hl = 'icon' }
             end,
-            footer = { "%s", align = "center" },
-            header = { "%s", align = "center" },
+            footer = { '%s', align = 'center' },
+            header = { '%s', align = 'center' },
             file = function(item, ctx)
-              local fname = vim.fn.fnamemodify(item.file, ":~")
+              local fname = vim.fn.fnamemodify(item.file, ':~')
               fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
               if #fname > ctx.width then
-                local dir = vim.fn.fnamemodify(fname, ":h")
-                local file = vim.fn.fnamemodify(fname, ":t")
+                local dir = vim.fn.fnamemodify(fname, ':h')
+                local file = vim.fn.fnamemodify(fname, ':t')
                 if dir and file then
                   file = file:sub(-(ctx.width - #dir - 2))
-                  fname = dir .. "/…" .. file
+                  fname = dir .. '/…' .. file
                 end
               end
-              local dir, file = fname:match("^(.*)/(.+)$")
-              return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
+              local dir, file = fname:match('^(.*)/(.+)$')
+              return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'file' } }
+                or { { fname, hl = 'file' } }
             end,
           },
           sections = {
             {
-              section = "terminal",
-              cmd = "chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 -c 2; sleep .1",
+              section = 'terminal',
+              cmd = 'chafa ~/src/nix/neovim/assets/jinteki.jpg --format symbols -s 50x50 -c 2; sleep .1',
               height = 35,
               width = 50,
               padding = 1,
             },
             {
-              section = "header",
+              section = 'header',
             },
             {
-              icon = " ",
-              title = "Git Status",
-              section = "terminal",
+              icon = ' ',
+              title = 'Git Status',
+              section = 'terminal',
               enabled = function()
                 return Snacks.git.get_root() ~= nil
               end,
-              cmd = "git status --short --branch --renames",
-              height = 5,
+              cmd = 'git status --short --branch --renames',
+              -- height = 35,
+              limit = 20,
               padding = 1,
               ttl = 5 * 60,
               indent = 3,
@@ -135,14 +137,15 @@ return {
             --   indent = 3,
             -- },
             {
-              icon = " ",
-              title = "Branches",
-              section = "terminal",
+              icon = ' ',
+              title = 'Branches',
+              section = 'terminal',
               enabled = function()
                 return Snacks.git.get_root() ~= nil
               end,
-              cmd = "git branch --list",
-              height = 5,
+              cmd = 'git branch --list',
+              -- height = 10,
+              limit = 10,
               padding = 1,
               ttl = 5 * 60,
               indent = 3,
