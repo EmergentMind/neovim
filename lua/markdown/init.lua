@@ -1,7 +1,8 @@
 local MP = ...
 return {
   { import = MP:relpath('markdown-preview') },
-  { import = MP:relpath('obisidian') },
+  -- FIXME: enable and setup
+  -- { import = MP:relpath('obisidian') },
   {
     -- FIXME: prefer using marksman with lsp to access toc via telescope
     'vim-markdown-toc',
