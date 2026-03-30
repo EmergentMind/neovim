@@ -11,11 +11,10 @@ return {
   { import = MP:relpath('noice') },
   { import = MP:relpath('notify') },
   { import = MP:relpath('nvim-numbertoggle') },
-  { import = MP:relpath('range-highlight') },
   { import = MP:relpath('smart-splits') },
   { import = MP:relpath('snacks') },
-  -- FIXME: enable this and setup
-  -- { import = MP:relpath('toggleterm') },
+  { import = MP:relpath('tabby') },
+  { import = MP:relpath('toggleterm') },
   { import = MP:relpath('trouble') },
   { import = MP:relpath('ufo') },
   { import = MP:relpath('vimade') },

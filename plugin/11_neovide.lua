@@ -1,5 +1,5 @@
 if vim.g.neovide then
-  vim.opt.mouse = "a"
+  vim.opt.mouse = 'a'
   -- FIXME: renable for debugging
   -- vim.api.nvim_create_autocmd('OptionSet', {
   --   pattern = 'mouse',
@@ -19,24 +19,38 @@ if vim.g.neovide then
   vim.g.neovide_padding_right = 10
   vim.g.neovide_padding_left = 10
 
-  local font = nixInfo(false, "settings", "guifont")
-  if font ~= "" then
+  local font = nixInfo(false, 'settings', 'guifont')
+  if font ~= '' then
     vim.o.guifont = font
-    print("Set font to " .. font)
+    print('Set font to ' .. font)
   end
 
-  local utils = require("utils")
+  local utils = require('utils')
+
+  -- FIXME: Likely move this
+  vim.cmd.colorscheme(vim.g.colorscheme)
+
+  if vim.g.colors_name == 'miasma' then
+    -- No built-in palette
+    -- local colors =
+  elseif vim.g.colors_name == 'catppuccin-mocha' then
+    local colors = require('catppuccin.palettes').get_palette('mocha')
+    vim.api.nvim_set_hl(0, 'Normal', { bg = colors.base })
+    utils.set_cursor_colors(colors)
+    utils.set_term_colors(colors)
+  end
+
   vim.g.neovide_cursor_smooth_blink = true
 
   vim.g.neovide_hide_mouse_when_typing = true
 
   -- FIXME: tweak this. maybe use outside of terminal too
-  local blink = "blinkwait777-blinkon1111-blinkoff666-Cursor"
-  local normal_cursor = "c-n-v-ve:block-" .. blink
-  local insert_cursor = "i-ci:ver25-" .. blink
-  local replace_cursor = "r-cr:hor20-" .. blink
-  local operator_cursor = "o:hor50-" .. blink
-  local showmatch_cursor = "sm:block-" .. blink
+  local blink = 'blinkwait777-blinkon1111-blinkoff666-Cursor'
+  local normal_cursor = 'c-n-v-ve:block-' .. blink
+  local insert_cursor = 'i-ci:ver25-' .. blink
+  local replace_cursor = 'r-cr:hor20-' .. blink
+  local operator_cursor = 'o:hor50-' .. blink
+  local showmatch_cursor = 'sm:block-' .. blink
 
   -- WARNING: Setting this to true messages up stuff like snacks dashboard
   vim.g.neovide_floating_shadow = false
@@ -49,12 +63,12 @@ if vim.g.neovide then
     replace_cursor,
     operator_cursor,
     showmatch_cursor,
-  }, ",")
+  }, ',')
 
 
   --[[ Neovide keymaps ]]
   -- stylua: ignore start
-  vim.keymap.set({ 'i', "n", "x", "v" }, '<C-S-v>', '<C-r>+',
+  vim.keymap.set({ 'i', "", "x", "v" }, '<C-S-v>', '<C-r>+',
     { noremap = true, silent = true, desc = 'Paste from clipboard from within most modes' })
   -- IMPORTANT: without `silent = false` pasting into cmdline mode won't show up immediately in neovide
   vim.keymap.set({ 'c', }, '<C-S-v>', '<C-r>+',

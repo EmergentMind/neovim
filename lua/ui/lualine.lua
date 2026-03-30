@@ -1,40 +1,72 @@
+local function mode()
+  local mode_map = {
+    n = 'N', -- Normal mode
+    i = 'I', -- Insert mode
+    v = 'V', -- Visual mode
+    [''] = 'VB', -- Visual block mode
+    V = 'VL', -- Visual line mode
+    c = 'C', -- Command-line mode
+    no = 'N', -- NInsert mode
+    s = 'S', -- Select mode
+    S = 'SL', -- Select line mode
+    ic = 'IC', -- Insert mode (completion)
+    R = 'R', -- Replace mode
+    Rv = 'RV', -- Virtual Replace mode
+    cv = 'C', -- Command-line mode
+    ce = 'CE', -- Ex mode
+    r = 'P', -- Prompt mode
+    rm = 'M', -- More mode
+    ['r?'] = '?', -- Confirm mode
+    ['!'] = '!', -- Shell mode
+    t = 'T', -- Terminal mode
+  }
+  -- Return the mode shorthand or [UNKNOWN] if no match
+  return mode_map[vim.fn.mode()] or 'U?'
+end
+
 return {
   {
-    "lualine.nvim",
-    event = "DeferredUIEnter",
-    after = function(plugin)
-      require("lualine").setup({
+    'lualine.nvim',
+    event = 'DeferredUIEnter',
+    after = function(_)
+      require('lualine').setup({
         options = {
-          icons_enabled = true,
-          theme = "auto",
-          disabled_filetypes = {
-            statusline = { "alpha" },
-            winbar = { "alpha" },
-          },
-          always_divide_middle = true,
-          globalstatus = true,
+          icons_enabled = false,
+          component_separators = '|',
+          section_separators = '',
         },
         sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { "filename" },
-          lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
+          lualine_a = { { mode } },
+          lualine_c = {
+            {
+              function()
+                return vim.b.term_name or vim.b.term_title or vim.fn.expand('%:t')
+              end,
+              cond = function()
+                return vim.bo.buftype == 'terminal'
+              end,
+            },
+            {
+              'filename',
+              path = 1,
+              status = true,
+              cond = function()
+                return vim.bo.buftype ~= 'terminal'
+              end,
+            },
+          },
         },
-        -- inactive_sections = {
-        --   lualine_a = {},
-        --   lualine_b = {},
-        --   lualine_c = { "filename" },
-        --   lualine_x = { "location" },
-        --   lualine_y = {},
-        --   lualine_z = {},
-        -- },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        -- FIXME: what else?
-        extensions = { "neo-tree", "trouble", "lazy" },
+        inactive_sections = {
+          lualine_b = {
+            {
+              'filename',
+              path = 3,
+              status = true,
+            },
+          },
+          lualine_x = { 'filetype' },
+        },
+        tabline = {}, -- Managed by tabby.nvim
       })
     end,
   },

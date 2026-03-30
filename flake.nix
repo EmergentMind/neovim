@@ -7,7 +7,7 @@
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
-      };
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -22,9 +22,13 @@
     # Neovim plugins from outside nixpkgs, either for fetching latest source or
     # because there is no package yet. See nvim-lib.neovimPlugins in module.nix
     ###
-    #FIXME: move this to introdus
+    #FIXME: move these to introdus
     plugins-nvim-atone = {
       url = "github:XXiaoA/atone.nvim";
+      flake = false;
+    };
+    plugins-telescope-toggleterm = {
+      url = "github:da-moon/telescope-toggleterm.nvim";
       flake = false;
     };
   };

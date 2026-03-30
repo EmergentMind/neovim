@@ -1,8 +1,8 @@
 return {
-  "resession.nvim",
+  'resession.nvim',
   lazy = false,
   after = function()
-    local resession = require("resession")
+    local resession = require('resession')
     resession.setup({
       autosave = {
         enabled = true,
@@ -11,7 +11,7 @@ return {
       },
       extensions = {
         lualine = {},
-        -- tabby = {},
+        tabby = {},
         terminal = {},
       },
     })
@@ -22,10 +22,10 @@ return {
     vim.keymap.set('n', '<leader>px', resession.detach, { desc = 'Close session' })
     -- stylua: ignore end
 
-    vim.api.nvim_create_autocmd("VimLeavePre", {
+    vim.api.nvim_create_autocmd('VimLeavePre', {
       callback = function()
         -- Always save a special session named "last"
-        resession.save("last")
+        resession.save('last')
       end,
     })
   end,

@@ -246,6 +246,22 @@
         "type": "github"
       }
     },
+    "plugins-telescope-toggleterm_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1644448110,
+        "narHash": "sha256-3LbOrix1sTadZh7z5wtwuNKsllqyl3IVhArWdwBCdhM=",
+        "owner": "da-moon",
+        "repo": "telescope-toggleterm.nvim",
+        "rev": "5c1402507f0ad01711196e5d27e9f0606f78b7d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "da-moon",
+        "repo": "telescope-toggleterm.nvim",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -275,6 +291,7 @@
         "introdus": "introdus",
         "nixpkgs": "nixpkgs_2",
         "plugins-nvim-atone": "plugins-nvim-atone",
+        "plugins-telescope-toggleterm": "plugins-telescope-toggleterm_2",
         "wrappers": "wrappers_2"
       }
     },

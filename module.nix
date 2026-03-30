@@ -31,7 +31,6 @@ inputs:
             scope-nvim # Per tabpage-scoped buffers
             mini-base16
             nvim-highlight-colors # highlight color code with its color
-            range-highlight-nvim # Highlight range as specified in commandline e.g. :10,15
             vim-illuminate # Highlight similar words as are under the cursor
             nvim-numbertoggle # Use relative number on focused buffer only
             vimade # Dim unfocused buffers

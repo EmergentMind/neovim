@@ -110,6 +110,14 @@ return {
               section = 'header',
             },
             {
+              icon = ' ',
+              title = 'Recent Files',
+              section = 'recent_files',
+              indent = 3,
+              padding = { 1, 1 },
+            },
+            { icon = ' ', title = 'Projects', section = 'projects', indent = 3, padding = 1 },
+            {
               icon = ' ',
               title = 'Git Status',
               section = 'terminal',

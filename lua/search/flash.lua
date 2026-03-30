@@ -1,28 +1,63 @@
 return {
   {
-    "flash.nvim",
+    'flash.nvim',
     auto_enable = true,
-    event = { "BufReadPost", "BufNewFile" },
+    event = { 'BufReadPost', 'BufNewFile' },
     keys = {
-      { "ns",         mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "nS",         mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "nr",         mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "nR",         mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<leader>nt", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      {
+        's',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash',
+      },
+      {
+        'S',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').treesitter()
+        end,
+        desc = 'Flash Treesitter',
+      },
+      {
+        'r',
+        mode = 'o',
+        function()
+          require('flash').remote()
+        end,
+        desc = 'Remote Flash',
+      },
+      {
+        'R',
+        mode = { 'o', 'x' },
+        function()
+          require('flash').treesitter_search()
+        end,
+        desc = 'Treesitter Search',
+      },
+      {
+        '<c-s>',
+        mode = { 'c' },
+        function()
+          require('flash').toggle()
+        end,
+        desc = 'Toggle Flash Search',
+      },
     },
     after = function(name)
-      require("flash").setup({
-        labels = "asdfghjklqwertyuiopzxcvbnm",
+      require('flash').setup({
+        labels = 'asdfghjklqwertyuiopzxcvbnm',
         search = {
           multi_window = true,
           forward = true,
           wrap = true,
-          mode = "exact",
+          mode = 'exact',
           incremental = false,
         },
         jump = {
           jumplist = true,
-          pos = "start",
+          pos = 'start',
           history = false,
           register = false,
           nohlsearch = false,
@@ -31,7 +66,7 @@ return {
         label = {
           uppercase = true,
           rainbow = {
-            enabled = false,
+            enabled = true,
             shade = 5,
           },
         },
@@ -41,7 +76,7 @@ return {
           },
           char = {
             enabled = true,
-            keys = { "f", "F", "t", "T", ";", "," },
+            keys = { 'f', 'F', 't', 'T', ';', ',' },
             jump_labels = true,
           },
         },
