@@ -2,6 +2,44 @@
 {
   description = "EmergentMind's Neovim Config";
 
+  outputs =
+    {
+      self,
+      nixpkgs,
+      wrappers,
+      flake-parts,
+      introdus,
+      ...
+    }@inputs:
+    let
+      lib = nixpkgs.lib;
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ wrappers.flakeModules.wrappers ];
+      systems = nixpkgs.lib.platforms.all;
+
+      perSystem =
+        { pkgs, config, ... }:
+        {
+          packages = {
+            full = config.packages.neovim.wrap {
+              settings = {
+                devMode = true;
+                neovide = true;
+                terminalMode = true;
+                unwrappedConfig = "/home/ta/src/nix/neovim";
+                baseConfig = lib.mkForce "/home/ta/src/nix/introdus/ta/wrappers/neovim";
+              };
+            };
+          };
+        };
+
+      flake.wrappers = {
+        neovim = lib.modules.importApply ./module.nix (inputs // introdus.inputs);
+        default = self.wrapperModules.neovim;
+      };
+    };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     wrappers = {
@@ -32,41 +70,4 @@
       flake = false;
     };
   };
-
-  outputs =
-    {
-      self,
-      nixpkgs,
-      wrappers,
-      flake-parts,
-      introdus,
-      ...
-    }@inputs:
-    let
-      lib = nixpkgs.lib;
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ wrappers.flakeModules.wrappers ];
-      systems = nixpkgs.lib.platforms.all;
-
-      perSystem =
-        { pkgs, config, ... }:
-        {
-          packages = {
-            full = config.packages.neovim.wrap {
-              settings = {
-                devMode = true;
-                neovide = true;
-                terminalMode = true;
-                unwrappedConfig = lib.generators.mkLuaInline "vim.uv.os_homedir() .. '/src/nix/neovim'";
-              };
-            };
-          };
-        };
-
-      flake.wrappers = {
-        neovim = lib.modules.importApply ./module.nix (inputs // introdus.inputs);
-        default = self.wrapperModules.neovim;
-      };
-    };
 }

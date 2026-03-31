@@ -27,6 +27,10 @@ return {
           pane_gap = 4,
           --NOTE: Use the actual binds instead of this shit.
           -- autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          wo = {
+            relativenumber = false,
+            number = false,
+          },
           preset = {
             pick = nil,
             keys = {

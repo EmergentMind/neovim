@@ -15,7 +15,7 @@ return {
           { '<leader>b', group = '[b]uffer' },
           { '<leader>d', group = '[d]ebugger' },
           { '<leader>e', group = 'neotree [e]xplorer' },
-          { '<leader>f', group = '[f]ind with telescope' },
+          { '<leader>f', group = '[f]ind' },
           { '<leader>F', group = '[F]ormatting' },
           { '<leader>g', group = '[g]it' },
           { '<leader>i', group = '[i]nverse value' },
