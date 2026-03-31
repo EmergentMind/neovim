@@ -1,29 +1,26 @@
-local MP = '' --[[ MP + relpath() trick explained in introdus repo
-                   Not set to ... here because base init.lua isn't passed an arg ]] --
+-- MP + relpath() trick explained in introdus repo
+-- Not set to ... here because base init.lua isn't passed an arg
 
+local MP = ''
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
+
+-- In order to keep our folders clean, we add runtime folders to allow luasnip
+-- to find our snippets lazily.
+local path = debug.getinfo(1, 'S').source:sub(2)
+local dir = vim.fn.fnamemodify(path, ':h')
+vim.opt.rtp:prepend(dir .. '/snippets/')
+vim.opt.rtp:prepend(dir .. '/snippets/vscode')
 
 -- This config is derived from the introdus neovim wrapper
 -- so have introdus set things up for us
 local introdus_config = os.getenv('NVIM_BASE_CONFIG')
-
 if introdus_config then
-  -- Prepend so B's lua/ directory is searchable immediately
-  vim.opt.rtp:prepend(introdus_config)
-
-  -- Prepend to packpath so B's plugins (if any) are found
-  vim.opt.packpath:prepend(introdus_config)
-
-  -- Handle the 'after' directory correctly
-  local introdus_after = introdus_config .. '/after'
-  if vim.fn.isdirectory(introdus_after) == 1 then
-    vim.opt.rtp:append(introdus_after)
-  end
+  vim.opt.runtimepath:prepend(introdus_config)
   require('introdus')
 else
   print([[ERROR: This config cannot run without introdus. 
-      Use settings.extraConfig in your wrapper to specify the introdus path]])
+      Use settings.baseConfig in your wrapper to specify the introdus path]])
 end
 
 -- NOTE: See https://codeberg.org/fidgetingbits/introdus/src/branch/aa/wrappers/neovim/

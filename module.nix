@@ -13,8 +13,11 @@ inputs:
   # Extend the introdus neovim template with any additional functionality we want
   config = {
     settings = {
-      extraConfig = "${inputs.introdus}/wrappers/neovim";
-      unwrappedConfig = lib.generators.mkLuaInline "vim.uv.os_homedir() .. '/src/nix/neovim'";
+      baseConfig = "${inputs.introdus}/wrappers/neovim";
+      # unwrappedConfig = lib.mkForce (
+      #   lib.generators.mkLuaInline # lua
+      #     "vim.uv.os_homedir() .. '${configDir}'"
+      # );
     };
 
     nvim-lib.pluginInputs = [

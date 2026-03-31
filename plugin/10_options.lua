@@ -4,19 +4,19 @@
 local opt = vim.opt
 local fn = vim.fn
 
-opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+-- opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 -- Decrease update time
-opt.updatetime = 250
-opt.timeoutlen = 300
+-- opt.updatetime = 250
+-- opt.timeoutlen = 300
 
 -- ================ General Appearance ========================
 opt.hidden = true
 -- show line numbers
-opt.number = true
-opt.termguicolors = true
+-- opt.number = true
+-- opt.termguicolors = true
 -- Keep signcolumn on by default
-opt.signcolumn = 'yes'
+-- opt.signcolumn = 'yes'
 -- show relative linenumbers
 opt.relativenumber = true
 -- display status line always
@@ -30,19 +30,19 @@ opt.autoread = true
 -- Highlight matching braces
 opt.showmatch = true
 -- Show current line and column
-opt.ruler = false
+-- opt.ruler = false
 -- No sounds
-opt.visualbell = true
+-- opt.visualbell = true
 -- Display tabs and trailing spaces visually
-opt.list = true
-opt.listchars = {
-  --tab = '» ',
-  trail = '·',
-}
+-- opt.list = true
+-- opt.listchars = {
+--   --tab = '» ',
+--   trail = '·',
+-- }
 
 -- ========= Clipboard ==========
 -- Sync yank with system clipboard
-opt.clipboard = 'unnamedplus'
+-- opt.clipboard = 'unnamedplus'
 
 -- ================ Basic Completion =======================
 opt.wildmode = 'list:longest,list:full' -- for tab completion in : command mode
@@ -51,14 +51,14 @@ opt.wildmenu = true -- enable ctrl-n and ctrl-p to scroll thru matches
 opt.wildignore =
   '*.o,*.obj,*~,vim/backups,sass-cache,DS_Store,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif'
 -- Set completeopt to have a better completion experience
-opt.completeopt = 'menu,preview,noselect'
+-- opt.completeopt = 'menu,preview,noselect'
 
 -- ================ Wrapping and Line Breaks ========================
 opt.wrap = false
 -- Wrap lines at convenient points
 opt.linebreak = true
 -- stops line wrapping from being confusing
-opt.breakindent = true
+-- opt.breakindent = true
 
 opt.textwidth = 80
 -- Toggle wrap function
@@ -68,8 +68,8 @@ opt.textwidth = 80
 
 -- ================ Indentation ======================
 -- opt.smarttab = true
-opt.cpoptions:append('I')
-opt.expandtab = true
+-- opt.cpoptions:append('I')
+-- opt.expandtab = true
 -- opt.smartindent = true
 -- opt.autoindent = true
 -- opt.tabstop = 4
@@ -88,26 +88,26 @@ opt.foldmethod = 'indent'
 opt.foldnestmax = 3
 
 -- ================ Splits ============================
-opt.splitbelow = true
-opt.splitright = true
+-- opt.splitbelow = true
+-- opt.splitright = true
 
 -- ================ Scrolling ========================
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 10
+-- opt.scrolloff = 10
 opt.sidescrolloff = 15
 opt.sidescroll = 1
 
 -- ================ Search and Replace ========================
 -- Preview incremental substitutions in a split
-opt.inccommand = 'split'
+-- opt.inccommand = 'split'
 -- searches incrementally as you type instead of after 'enter'
 opt.incsearch = true
 -- highlight search results
-opt.hlsearch = true
+-- opt.hlsearch = true
 -- search case insensitive
-opt.ignorecase = true
+-- opt.ignorecase = true
 -- search matters if capital letter
-opt.smartcase = true
+-- opt.smartcase = true
 
 -- ================ Movement ========================
 -- allow backspace in insert mode
@@ -139,18 +139,18 @@ if fn.has('persistent_undo') == 1 then
   end
 
   opt.undodir = undo_dir
-  opt.undofile = true
+  -- opt.undofile = true
 end
 
-vim.g.netrw_liststyle = 0
-vim.g.netrw_banner = 0
+-- vim.g.netrw_liststyle = 0
+-- vim.g.netrw_banner = 0
 
 -- Default: "ltToOCF"
 -- Disable:
 -- s - search hit TOP
 -- W - written messages
 -- I - intro messages
-vim.opt.shortmess:append('sIW')
+-- vim.opt.shortmess:append('sIW')
 
 if vim.g.neovide then
   -- When using rounded borders lualine/tabs clip
