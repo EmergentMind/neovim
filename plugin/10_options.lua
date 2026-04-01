@@ -18,7 +18,7 @@ opt.termguicolors = true
 -- Keep signcolumn on by default
 opt.signcolumn = 'yes'
 -- show relative linenumbers
-opt.relativenumber = false
+opt.relativenumber = true
 -- display status line always
 opt.laststatus = 0
 -- Store lots of :cmdline
