@@ -1,12 +1,11 @@
--- dim unfocused buffers
 return {
   {
-    "vimade",
-    event = "DeferredUIEnter",
+    'vimade',
+    event = 'DeferredUIEnter',
     after = function(plugin)
-      require("vimade").setup({
-        recipe = {'default', {animate = false}},
-        fadelevel = 0.4,
+      require('vimade').setup({
+        recipe = { 'default', { animate = false } },
+        fadelevel = 0.6,
       })
     end,
   },
