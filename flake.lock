@@ -97,7 +97,7 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1775058540,
+        "lastModified": 1775147077,
         "narHash": "sha256-+wfed+SZ2BBVzIIO6cg6NhURUOhktJLBNb9KyQ/lQI0=",
         "path": "/home/ta/src/nix/introdus/ta",
         "type": "path"
