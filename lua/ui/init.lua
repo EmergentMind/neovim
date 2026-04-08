@@ -9,6 +9,7 @@ return {
   { import = MP:relpath('neo-tree') },
   { import = MP:relpath('notify') },
   { import = MP:relpath('nvim-numbertoggle') },
+  { import = MP:relpath('screenkey') },
   { import = MP:relpath('snacks') },
   { import = MP:relpath('tabby') },
   { import = MP:relpath('toggleterm') },

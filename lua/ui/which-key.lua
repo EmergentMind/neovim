@@ -23,14 +23,13 @@ return {
           { '<leader>m', group = '[m]arkdown' },
           { '<leader>o', group = '[o]bsidian' },
           { '<leader>s', group = '[s]earch/replace' },
-          -- FIXME: does this collide with above?
-          -- { '<leader>s', group = '[s]ession' },
+          { '<leader>p', group = 'session' },
           { '<leader>t', group = '[t]oggle settings' },
           { '<leader>u', group = '[u]ndotree' },
-          { '<leader>w', group = '[w]iki and window motions' },
+          { '<leader>w', group = '[w]indow' },
           { '<leader>x', group = 'quickfi[x] & diagnostics' },
           { '<leader>y', group = '[y]ank' },
-          { '<leader>z', group = '[z]en' },
+          { '<leader>z', group = 'folds/[z]en' },
           { '<leader><leader>', group = 'misc' },
         },
       })

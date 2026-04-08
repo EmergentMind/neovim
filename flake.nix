@@ -61,6 +61,10 @@
     # because there is no package yet. See nvim-lib.neovimPlugins in module.nix
     ###
     #FIXME: move these to introdus
+    plugins-screenkey = {
+      url = "github:NStefan002/screenkey.nvim";
+      flake = false;
+    };
     plugins-nvim-atone = {
       url = "github:XXiaoA/atone.nvim";
       flake = false;

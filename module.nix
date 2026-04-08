@@ -63,8 +63,7 @@ inputs:
           ++ lib.optionals config.settings.devMode (
             lib.attrValues {
               inherit (config.nvim-lib.neovimPlugins)
-                #FIXME:
-                # lua-console
+                screenkey # adding this under devmode because I don't think we want it otherwise
                 ;
             }
           )
