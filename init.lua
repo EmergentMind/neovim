@@ -2,8 +2,10 @@
 -- Not set to ... here because base init.lua isn't passed an arg
 
 local MP = ''
-vim.g.mapleader = ';'
-vim.g.maplocalleader = ';'
+-- vim.g.mapleader = ';'
+-- vim.g.maplocalleader = ';'
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- In order to keep our folders clean, we add runtime folders to allow luasnip
 -- to find our snippets lazily.
