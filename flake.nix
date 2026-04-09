@@ -22,6 +22,8 @@
         { pkgs, config, ... }:
         {
           packages = {
+            # NOTE: reminder that the paths for this package are only used
+            # when running `nix build .#full` for testing
             full = config.packages.neovim.wrap {
               settings = {
                 devMode = true;
