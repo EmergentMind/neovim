@@ -61,6 +61,10 @@
     # because there is no package yet. See nvim-lib.neovimPlugins in module.nix
     ###
     #FIXME: move these to introdus
+    plugins-modes = {
+      url = "github:mvllow/modes.nvim";
+      flake = false;
+    };
     plugins-screenkey = {
       url = "github:NStefan002/screenkey.nvim";
       flake = false;

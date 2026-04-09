@@ -7,6 +7,7 @@ return {
   { import = MP:relpath('highlight-colors') },
   { import = MP:relpath('lualine') },
   { import = MP:relpath('neo-tree') },
+  { import = MP:relpath('modes') },
   { import = MP:relpath('notify') },
   { import = MP:relpath('nvim-numbertoggle') },
   { import = MP:relpath('screenkey') },

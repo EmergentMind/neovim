@@ -30,14 +30,8 @@ inputs:
       # Extending existing spec from introdus
       lsp = {
         data = lib.attrValues {
-          inherit (pkgs.vimPlugins)
-            scope-nvim # Per tabpage-scoped buffers
-            mini-base16
-            nvim-highlight-colors # highlight color code with its color
-            vim-illuminate # Highlight similar words as are under the cursor
-            nvim-numbertoggle # Use relative number on focused buffer only
-            vimade # Dim unfocused buffers
-            ;
+          # inherit (pkgs.vimPlugins)
+          #   ;
         };
         extraPackages = lib.optionals config.settings.devMode (
           lib.attrValues {
@@ -58,6 +52,13 @@ inputs:
           lib.attrValues {
             inherit (pkgs.vimPlugins)
               scope-nvim # Per tabpage-scoped buffers
+              mini-base16
+              nvim-highlight-colors # highlight color code with its color
+              vim-illuminate # Highlight similar words as are under the cursor
+              nvim-numbertoggle # Use relative number on focused buffer only
+              ;
+            inherit (config.nvim-lib.neovimPlugins)
+              modes # modes specific cursor and line highlighting
               ;
           }
           ++ lib.optionals config.settings.devMode (
