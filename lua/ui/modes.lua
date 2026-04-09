@@ -7,10 +7,10 @@ return {
         bg = '', -- Optional bg param, defaults to Normal hl group
         copy = '#458588',
         delete = '#D05000',
-        change = '#FFCC1B', -- Optional param, defaults to delete
+        change = '#FE8019', -- Optional param, defaults to delete
+        replace = '#FFCC1B',
         format = '#B59B4D',
         insert = '#B8BB26',
-        replace = '#245361',
         select = '#8F3F71', -- Optional param, defaults to visual
         visual = '#8F3F71',
       },
