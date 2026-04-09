@@ -97,8 +97,8 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1775612865,
-        "narHash": "sha256-/XXk8WiEUMz6RQscQSpIqwoq6r9Pwkgv44Jdq0ammBE=",
+        "lastModified": 1775700696,
+        "narHash": "sha256-fkJ8pc6g7BocVPq6uUX85PbynvWw/4mUgctERzI9xZI=",
         "path": "/home/ta/src/nix/introdus/ta",
         "type": "path"
       },
@@ -184,6 +184,22 @@
       "original": {
         "owner": "yutkat",
         "repo": "confirm-quit.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-modes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773625517,
+        "narHash": "sha256-Oj6l0lJegIe3rhM4Y7co3JAzQCRC1ryOruhDR1k3giY=",
+        "owner": "mvllow",
+        "repo": "modes.nvim",
+        "rev": "2badf8771dbb2d1e1066fd6a5dddaad2fc836e72",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mvllow",
+        "repo": "modes.nvim",
         "type": "github"
       }
     },
@@ -360,6 +376,7 @@
         "flake-parts": "flake-parts",
         "introdus": "introdus",
         "nixpkgs": "nixpkgs_2",
+        "plugins-modes": "plugins-modes",
         "plugins-nvim-atone": "plugins-nvim-atone",
         "plugins-screenkey": "plugins-screenkey",
         "plugins-telescope-toggleterm": "plugins-telescope-toggleterm",
