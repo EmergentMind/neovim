@@ -15,6 +15,5 @@ return {
   { import = MP:relpath('toggleterm') },
   { import = MP:relpath('trouble') },
   { import = MP:relpath('ufo') },
-  { import = MP:relpath('vimade') },
   { import = MP:relpath('which-key') },
 }
