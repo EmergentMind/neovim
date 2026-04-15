@@ -53,6 +53,7 @@ nixInfo.lze.load({
   },
   {
     import = MP:relpath('git'),
+    enabled = nixInfo(false, 'settings', 'devMode'),
     category = 'git',
   },
   {
