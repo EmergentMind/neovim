@@ -62,11 +62,11 @@
     # Neovim plugins from outside nixpkgs, either for fetching latest source or
     # because there is no package yet. See nvim-lib.neovimPlugins in module.nix
     ###
-    #FIXME: move these to introdus
     plugins-modes = {
       url = "github:mvllow/modes.nvim";
       flake = false;
     };
+    #FIXME: move these to introdus
     plugins-screenkey = {
       url = "github:NStefan002/screenkey.nvim";
       flake = false;
