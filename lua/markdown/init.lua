@@ -1,6 +1,5 @@
 local MP = ...
 return {
-  { import = MP:relpath('markdown-preview') },
   -- FIXME: enable and setup
   -- { import = MP:relpath('obisidian') },
   {
