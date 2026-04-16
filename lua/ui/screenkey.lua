@@ -3,7 +3,7 @@ return {
   'screenkey',
   event = 'VimEnter',
   keys = {
-    { '<leader>tsk', '<cmd>Screenkey<CR>', mode = { 'n' }, desc = 'Toggle screenkey' },
+    { '<leader>tk', '<cmd>Screenkey<CR>', mode = { 'n' }, desc = '[T]oggle screen[k]ey' },
   },
   after = function(plugin)
     require('screenkey').setup({
