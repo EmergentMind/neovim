@@ -16,7 +16,6 @@ return {
           { '<leader>a', group = '[a]i' },
           { '<leader>ap', group = 'Copilot' },
           { '<leader>b', group = '[b]uffer' },
-          { '<leader>c',  group = 'CodeCompanion' },
           { '<leader>d', group = '[d]ebugger' },
           { '<leader>e', group = 'neotree [e]xplorer' },
           { '<leader>f', group = '[f]ind' },
