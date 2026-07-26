@@ -29,8 +29,8 @@
                 devMode = true;
                 neovide = true;
                 terminalMode = true;
-                unwrappedConfig = "/home/ta/src/nix/neovim";
-                # baseConfig = lib.mkForce "/home/ta/src/nix/introdus/ta/wrappers/neovim";
+                unwrappedConfig = "/home/ta/dev/nix/neovim";
+                # baseConfig = lib.mkForce "/home/ta/dev/nix/introdus/ta/wrappers/neovim";
               };
             };
             basic = config.packages.neovim.wrap {
@@ -60,7 +60,7 @@
     # Shared wrapper modules and configs
     introdus = {
       # url = "git+ssh://git@codeberg.org/fidgetingbits/introdus?ref=ta";
-      url = "path:///home/ta/src/nix/introdus/ta";
+      url = "path:///home/ta/dev/nix/introdus/ta";
     };
 
     ###
