@@ -120,7 +120,7 @@ in
           # inherit (pkgs.vimPlugins)
           #   ;
         };
-        extraPackages = lib.optionals config.settings.devMode (
+        runtimePkgs = lib.optionals config.settings.devMode (
           lib.attrValues {
             inherit (pkgs)
               postgres-language-server
