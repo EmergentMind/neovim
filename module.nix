@@ -116,9 +116,12 @@ in
       };
       # Extending existing spec from introdus
       lsp = {
+        #FIXME: doubling up definition of plugin that is already defined introdus because without
+        # it build barfs. Tried `data = null;` and no data attr but no dice.
         data = lib.attrValues {
-          # inherit (pkgs.vimPlugins)
-          #   ;
+          inherit (pkgs.vimPlugins)
+            nvim-lspconfig
+            ;
         };
         runtimePkgs = lib.optionals config.settings.devMode (
           lib.attrValues {
